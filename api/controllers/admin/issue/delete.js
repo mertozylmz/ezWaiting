@@ -3,6 +3,10 @@ module.exports = {
 
   description: "Delete issue.",
 
+  inputs: {
+
+  },
+
   exits: {
     success: {
       description: "Issue deleted succesfully.",
@@ -12,7 +16,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs) {
+  fn: async function (inputs, exits) {
     try {
       let req = this.req;
 
