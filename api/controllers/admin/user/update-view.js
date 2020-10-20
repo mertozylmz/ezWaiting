@@ -1,28 +1,31 @@
 module.exports = {
+  friendlyName: "Update User View",
 
+  description: "Render update form for user",
 
-  friendlyName: 'Update view',
-
-
-  description: '',
-
-
-  inputs: {
-
-  },
-
+  inputs: {},
 
   exits: {
-
+    success: {
+      responseType: "view",
+      viewTemplatePath: "admin/user/update",
+    },
   },
 
+  fn: async function (inputs,exits) {
 
-  fn: async function (inputs) {
+    let req = this.req;
 
-    // All done.
-    return;
+    let user = await User.findOne({
+      userRole: "USER_ROLE_SUPER_ADMIN",
+      id: req.param("id"),
+    });
 
-  }
-
-
+    return exits.success({
+      layout: "layouts/layout-admin",
+      section: "user",
+      user: "user-list",
+      user: publisher,
+    });
+  },
 };

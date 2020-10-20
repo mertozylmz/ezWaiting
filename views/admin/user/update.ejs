@@ -1,25 +1,25 @@
 <div class="br-section-wrapper">
-  <h6 class="br-section-label">CREATE PUBLISHER</h6>
+  <h6 class="br-section-label">UPDATE user</h6>
 
-  <form action="/admin/publisher/create" method="POST">
+  <form action="/admin/user/update/<%= user.id%>" method="POST">
     <div class="form-layout form-layout-1">
       <div class="row mg-b-25">
         <div class="col-lg-4">
           <div class="form-group">
             <label class="form-control-label">Firstname: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="firstName" placeholder="Enter firstname">
+            <input class="form-control form-control-dark" type="text" name="firstName" placeholder="Enter firstname" value="<%= user.firstName%>">
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group">
             <label class="form-control-label">Lastname: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="lastName" placeholder="Enter lastname">
+            <input class="form-control form-control-dark" type="text" name="lastName" placeholder="Enter lastname" value="<%= user.lastName%>">
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group">
             <label class="form-control-label">Email address: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="text" name="email" placeholder="Enter email address">
+            <input class="form-control form-control-dark" type="text" name="email" placeholder="Enter email address" value="<%= user.email%>">
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
@@ -30,26 +30,14 @@
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group mg-b-10-force">
-            <label class="form-control-label">Company Name: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="companyName" placeholder="Enter company name">
-          </div>
-        </div><!-- col-8 -->
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label class="form-control-label">Website: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="webSite" placeholder="Enter website">
-          </div>
-        </div><!-- col-4 -->
-        <div class="col-lg-4">
-          <div class="form-group mg-b-10-force">
             <label class="form-control-label">Address: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="address" placeholder="Enter address">
+            <input class="form-control form-control-dark" type="text" name="address" placeholder="Enter address" value="<%= user.address%>">
           </div>
         </div><!-- col-8 -->
         <div class="col-lg-4">
           <div class="form-group mg-b-10-force">
             <label class="form-control-label">Phone: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="phone" placeholder="Enter phone">
+            <input class="form-control form-control-dark" type="text" name="phone" placeholder="Enter phone" value="<%= user.phone%>">
           </div>
         </div><!-- col-8 -->
       </div><!-- row -->

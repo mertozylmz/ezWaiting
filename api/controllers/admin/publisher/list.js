@@ -1,28 +1,27 @@
 module.exports = {
+  friendlyName: "List Publisher",
 
+  description: "Render list form for publisher",
 
-  friendlyName: 'List',
-
-
-  description: 'List publisher.',
-
-
-  inputs: {
-
-  },
-
+  inputs: {},
 
   exits: {
-
+    success: {
+      responseType: "view",
+      viewTemplatePath: "admin/publisher/list",
+    },
   },
 
+  fn: async function (inputs, exits) {
+    let publishers = await User.find({
+      userRole: "USER_ROLE_PUBLISHER",
+    });
 
-  fn: async function (inputs) {
-
-    // All done.
-    return;
-
-  }
-
-
+    return exits.success({
+      layout: "layouts/layout-admin",
+      section: "publisher",
+      subSection: "publisher-list",
+      publishers: publishers,
+    });
+  },
 };

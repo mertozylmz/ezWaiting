@@ -20,6 +20,13 @@ module.exports.session = {
   ***************************************************************************/
   secret: '221c0f3bff62b31f7c6f4cffd3d3cad4',
 
+  adapter: 'connect-mongo',
+  url: 'mongodb://localhost:27017/ezWaiting_db',
+
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000
+  },
+
 
   /***************************************************************************
   *                                                                          *

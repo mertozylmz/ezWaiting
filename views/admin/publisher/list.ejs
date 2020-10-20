@@ -1,0 +1,45 @@
+<div class="br-section-wrapper">
+  <h6 class="br-section-label">PUBLISHER'S LIST</h6>
+
+  <div class="table-wrapper">
+    <table id="datatable1" class="table display responsive nowrap">
+      <thead>
+        <tr>
+          <th class="wd-15p">First name</th>
+          <th class="wd-15p">Last name</th>
+          <th class="wd-20p">Email</th>
+          <th class="wd-15p">Company</th>
+          <th class="wd-10p">Status</th>
+          <th class="wd-10p">Update</th>
+          <th class="wd-25p">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% publishers.forEach(function(publisher){ %>
+        <tr>
+          <td><%= publisher.firstName %></td>
+          <td><%= publisher.lastName %></td>
+          <td><%= publisher.email%></td>
+          <td><%= publisher.companyName%></td>
+          <td>
+            <% if (publisher.isActive == true) { %> Active <% } else { %>
+            Passive <% } %>
+          </td>
+          <td>
+            <a href="/admin/publisher/update/<%= publisher.id %>">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+            </a>
+          </td>
+          <td>
+            <a class="btn-remove" href="/admin/publisher/delete/<%= publisher.id %>">
+              <i class="ion-trash-a" aria-hidden="true"></i>
+            </a>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <!-- table-wrapper -->
+</div>
+<!-- br-section-wrapper -->

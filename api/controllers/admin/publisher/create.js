@@ -16,13 +16,6 @@ module.exports = {
       description: "Password value of the user for loggin in to admin panel.",
     },
 
-    userRole: {
-      type: "string",
-      required: true,
-      description:
-        "User role string for checking policies and letting use the methods. USER_SUPER_ADMIN | USER_PUBLISHER | USER_MOBILE_USER",
-    },
-
     companyName: {
       type: "string",
       description: "Company name of the Publisher role.",
@@ -55,9 +48,6 @@ module.exports = {
   },
 
   exits: {
-    success: {
-      description: "Created succesfully.",
-    },
     invalidRequest: {
       statusCode: 500,
     },
@@ -65,8 +55,10 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     try {
+      let res = this.res;
+      let req = this.req;
 
-      await User.create({
+      let user = await User.create({
         firstName: inputs.firstName,
         lastName: inputs.lastName,
         email: inputs.email,
@@ -75,12 +67,11 @@ module.exports = {
         webSite: inputs.webSite,
         address: inputs.address,
         phone: inputs.phone,
+        userRole: "USER_ROLE_PUBLISHER",
+        createdBy: req.user.id
       }).fetch();
 
-      return exits.success({
-        status: true,
-        message: "New publisher is created.",
-      });
+      return res.redirect('/publisher/update/'+user.id);
     } catch (error) {
       console.log("Create publisher error: ", error);
       return exits.invalidRequest({

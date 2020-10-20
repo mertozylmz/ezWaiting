@@ -1,28 +1,36 @@
 module.exports = {
+  friendlyName: "Delete location",
 
-
-  friendlyName: 'Delete',
-
-
-  description: 'Delete location.',
-
-
-  inputs: {
-
-  },
-
+  description: "Delete location.",
 
   exits: {
-
+    success: {
+      description: "Location deleted succesfully.",
+    },
+    errorRequest: {
+      statusCode: 500
+    }
   },
 
-
   fn: async function (inputs) {
+    try {
+      let req = this.req;
 
-    // All done.
-    return;
+      await Location.updateOne({ id: req.param("id") }).set({
+        isActive: 0,
+        isDeleted: 1,
+      });
 
-  }
-
-
+      return exits.success({
+        status: true,
+        message: 'Location is deleted.'
+      })
+    } catch (error) {
+      console.log('Delete error: ', error);
+      return exits.errorRequest({
+        status: false,
+        message: 'An error occured.'
+      })
+    }
+  },
 };

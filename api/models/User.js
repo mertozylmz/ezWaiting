@@ -22,7 +22,6 @@ module.exports = {
 
     password: {
       type: "string",
-      required: true,
       description: "Password value of the user for loggin in to admin panel.",
     },
 
@@ -30,7 +29,7 @@ module.exports = {
       type: "string",
       required: true,
       description:
-        "User role string for checking policies and letting use the methods. USER_SUPER_ADMIN | USER_PUBLISHER | USER_MOBILE_USER",
+        "User role string for checking policies and letting use the methods. USER_ROLE_SUPER_ADMIN | USER_ROLE_PUBLISHER | USER_MOBILE_USER",
     },
 
     companyName: {
@@ -85,8 +84,11 @@ module.exports = {
   },
 
   beforeUpdate: function (user, cb) {
-    const hash = bcrypt.hashSync(user.password, saltRounds);
-    user.password = hash;
+    if(user.password){
+      const hash = bcrypt.hashSync(user.password, saltRounds);
+      user.password = hash;
+    }
+
     return cb();
   },
 };

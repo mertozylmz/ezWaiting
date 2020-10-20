@@ -1,28 +1,27 @@
 module.exports = {
+  friendlyName: "List user",
 
+  description: "Render user form for publisher",
 
-  friendlyName: 'List',
-
-
-  description: 'List user.',
-
-
-  inputs: {
-
-  },
-
+  inputs: {},
 
   exits: {
-
+    success: {
+      responseType: "view",
+      viewTemplatePath: "admin/user/list",
+    },
   },
 
+  fn: async function (inputs, exits) {
+    let users = await User.find({
+      userRole: "USER_ROLE_SUPER_ADMIN",
+    });
 
-  fn: async function (inputs) {
-
-    // All done.
-    return;
-
-  }
-
-
+    return exits.success({
+      layout: "layouts/layout-admin",
+      section: "user",
+      subSection: "user-list",
+      users: users,
+    });
+  },
 };

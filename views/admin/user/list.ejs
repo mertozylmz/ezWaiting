@@ -1,0 +1,43 @@
+<div class="br-section-wrapper">
+  <h6 class="br-section-label">user'S LIST</h6>
+
+  <div class="table-wrapper">
+    <table id="datatable1" class="table display responsive nowrap">
+      <thead>
+        <tr>
+          <th class="wd-15p">First name</th>
+          <th class="wd-15p">Last name</th>
+          <th class="wd-20p">Email</th>
+          <th class="wd-10p">Status</th>
+          <th class="wd-10p">Update</th>
+          <th class="wd-25p">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(function(user){ %>
+        <tr>
+          <td><%= user.firstName %></td>
+          <td><%= user.lastName %></td>
+          <td><%= user.email%></td>
+          <td>
+            <% if (user.isActive == true) { %> Active <% } else { %>
+            Passive <% } %>
+          </td>
+          <td>
+            <a href="/admin/user/update/<%= user.id %>">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+            </a>
+          </td>
+          <td>
+            <a class="btn-remove" href="/admin/user/delete/<%= user.id %>">
+              <i class="ion-trash-a" aria-hidden="true"></i>
+            </a>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <!-- table-wrapper -->
+</div>
+<!-- br-section-wrapper -->

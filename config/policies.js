@@ -18,9 +18,8 @@ module.exports.policies = {
   ***************************************************************************/
 
   // '*': true,
-
   'admin/utils/dashboard': 'isAuthenticated',
 
-
-  'admin/publisher/create-view': 'isAuthenticated',
+  //Publisher Routes
+  'admin/publisher/*': 'isAuthenticated',
 };

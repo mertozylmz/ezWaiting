@@ -69,8 +69,8 @@ module.exports.routes = {
   'GET /admin/publisher/create': {action: 'admin/publisher/create-view'},
   'POST /admin/publisher/create': {action: 'admin/publisher/create'},
   'GET /admin/publisher/list': {action: 'admin/publisher/list'},
-  'GET /admin/publisher/update': {action: 'admin/publisher/update-view'},
-  'POST /admin/publisher/update': {action: 'admin/publisher/update'},
+  'GET /admin/publisher/update/:id': {action: 'admin/publisher/update-view'},
+  'POST /admin/publisher/update/:id': {action: 'admin/publisher/update'},
   'GET /admin/publisher/delete/:id': {action: 'admin/publisher/delete'},
 
   //Admin-Title Routes

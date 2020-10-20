@@ -1,28 +1,36 @@
 module.exports = {
+  friendlyName: "Delete title",
 
-
-  friendlyName: 'Delete',
-
-
-  description: 'Delete title.',
-
-
-  inputs: {
-
-  },
-
+  description: "Delete title.",
 
   exits: {
-
+    success: {
+      description: "Title deleted succesfully.",
+    },
+    errorRequest: {
+      statusCode: 500
+    }
   },
 
-
   fn: async function (inputs) {
+    try {
+      let req = this.req;
 
-    // All done.
-    return;
+      await Title.updateOne({ id: req.param("id") }).set({
+        isActive: 0,
+        isDeleted: 1,
+      });
 
-  }
-
-
+      return exits.success({
+        status: true,
+        message: 'Title is deleted.'
+      })
+    } catch (error) {
+      console.log('Delete error: ', error);
+      return exits.errorRequest({
+        status: false,
+        message: 'An error occured.'
+      })
+    }
+  },
 };
