@@ -1,0 +1,74 @@
+<div class="br-section-wrapper">
+  <h6 class="br-section-label">CREATE PUBLISHER</h6>
+
+  <form action="/admin/publisher/create" method="POST">
+    <div class="form-layout form-layout-1">
+      <div class="row mg-b-25">
+        <div class="col-lg-4">
+
+          <div class="form-group">
+            <label class=" form-control-label">Locations: <span class="tx-danger">*</span></label>
+            <select class="form-control form-control-dark select2" name="locations" data-placeholder="Choose locations..." multiple>
+              <option value="">Choose...</option>
+              <option value="a">Ali</option>
+              <option value="b">Veli</option>
+              <option value="c">Deniz</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label">Firstname: <span class="tx-danger"></span></label>
+            <input class="form-control form-control-dark" type="text" name="firstName" placeholder="Enter firstname">
+          </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="form-control-label">Lastname: <span class="tx-danger"></span></label>
+            <input class="form-control form-control-dark" type="text" name="lastName" placeholder="Enter lastname">
+          </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="form-control-label">Email address: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="email" placeholder="Enter email address">
+          </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="form-control-label">Password: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="password" name="password" placeholder="*******">
+          </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+          <div class="form-group mg-b-10-force">
+            <label class="form-control-label">Company Name: <span class="tx-danger"></span></label>
+            <input class="form-control form-control-dark" type="text" name="companyName" placeholder="Enter company name">
+          </div>
+        </div><!-- col-8 -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="form-control-label">Website: <span class="tx-danger"></span></label>
+            <input class="form-control form-control-dark" type="text" name="webSite" placeholder="Enter website">
+          </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+          <div class="form-group mg-b-10-force">
+            <label class="form-control-label">Address: <span class="tx-danger"></span></label>
+            <input class="form-control form-control-dark" type="text" name="address" placeholder="Enter address">
+          </div>
+        </div><!-- col-8 -->
+        <div class="col-lg-4">
+          <div class="form-group mg-b-10-force">
+            <label class="form-control-label">Phone: <span class="tx-danger"></span></label>
+            <input class="form-control form-control-dark" type="text" name="phone" placeholder="Enter phone">
+          </div>
+        </div><!-- col-8 -->
+      </div><!-- row -->
+
+      <div class="form-layout-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-secondary">Cancel</button>
+      </div><!-- form-layout-footer -->
+    </div><!-- form-layout -->
+  </form>
+</div>

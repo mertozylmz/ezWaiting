@@ -77,7 +77,7 @@ module.exports.routes = {
   'GET /admin/title/create': {action: 'admin/title/create-view'},
   'POST /admin/title/create': {action: 'admin/title/create'},
   'GET /admin/title/list': {action: 'admin/title/list'},
-  'GET /admin/title/update': {action: 'admin/title/update-view'},
-  'POST /admin/title/update': {action: 'admin/title/update'},
-  'GET /admin/title/create': {action: 'admin/title/delete'},
+  'GET /admin/title/update/:id': {action: 'admin/title/update-view'},
+  'POST /admin/title/update/:id': {action: 'admin/title/update'},
+  'GET /admin/title/delete/:id': {action: 'admin/title/delete'},
 };
