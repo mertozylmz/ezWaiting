@@ -15,17 +15,22 @@ module.exports = {
   fn: async function (inputs,exits) {
 
     let req = this.req;
+    const title = await Title.findOne({ id: req.param("id") });
 
-    let publisher = await User.findOne({
-      userRole: "USER_ROLE_PUBLISHER",
-      id: req.param("id"),
-    });
+    const publishers = await User.find({ userRole: "USER_ROLE_PUBLISHER" });
+    const countries = await Country.find();
+    const categories = await Category.find();
+    const issues = await Issue.find();
 
     return exits.success({
       layout: "layouts/layout-admin",
       section: "publisher",
       subSection: "publisher-list",
-      publisher: publisher,
+      title,
+      publishers,
+      countries,
+      categories,
+      issues
     });
   },
 };
