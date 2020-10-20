@@ -1,28 +1,31 @@
 module.exports = {
+  friendlyName: "Update Location View",
 
+  description: "Render update form for location",
 
-  friendlyName: 'Update view',
-
-
-  description: '',
-
-
-  inputs: {
-
-  },
-
+  inputs: {},
 
   exits: {
-
+    success: {
+      responseType: "view",
+      viewTemplatePath: "admin/location/update",
+    },
   },
 
+  fn: async function (inputs,exits) {
 
-  fn: async function (inputs) {
+    let req = this.req;
 
-    // All done.
-    return;
+    let location = await Location.findOne({id: req.param("id")}).populate('country');
 
-  }
+    let countries = await Country.find();
 
-
+    return exits.success({
+      layout: "layouts/layout-admin",
+      section: "location",
+      subSection: "location-list",
+      location: location,
+      countries:countries
+    });
+  },
 };

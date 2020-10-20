@@ -3,6 +3,10 @@ module.exports = {
 
   description: "Render create form for issue",
 
+  inputs: {
+
+  },
+
   exits: {
     success: {
       responseType: "view",
@@ -10,8 +14,12 @@ module.exports = {
     },
   },
 
-  fn: async function (exits) {
+  fn: async function (inputs, exits) {
     //Render view as return with layout.
+
+    let
+
+
 
     return exits.success({
       layout: 'layouts/layout-admin',

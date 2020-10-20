@@ -3,6 +3,10 @@ module.exports = {
 
   description: "Render create form for location",
 
+  inputs: {
+
+  },
+
   exits: {
     success: {
       responseType: "view",
@@ -10,13 +14,15 @@ module.exports = {
     },
   },
 
-  fn: async function (exits) {
-    //Render view as return with layout.
+  fn: async function (inputs, exits) {
+    let countries = await Country.find();
 
     return exits.success({
       layout: 'layouts/layout-admin',
       section: 'location',
-      subSection :'location-create'
+      subSection :'location-create',
+      countries:countries
     });
   },
 };
+

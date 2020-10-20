@@ -49,11 +49,10 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-    // one-to-one relations
+    // many-to-one relations
 
     country: {
       model: "country",
-      via: "locations",
     },
 
     // many-to-many relations

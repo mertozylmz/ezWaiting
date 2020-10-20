@@ -1,28 +1,26 @@
 module.exports = {
+  friendlyName: "List titles",
 
+  description: "Render title list.",
 
-  friendlyName: 'List',
-
-
-  description: 'List title.',
-
-
-  inputs: {
-
-  },
-
+  inputs: {},
 
   exits: {
-
+    success: {
+      responseType: "view",
+      viewTemplatePath: "admin/title/list",
+    },
   },
 
+  fn: async function (inputs, exits) {
 
-  fn: async function (inputs) {
+    let titles = await Title.find();
 
-    // All done.
-    return;
-
-  }
-
-
+    return exits.success({
+      layout: "layouts/layout-admin",
+      section: "title",
+      subSection: "title-list",
+      titles: titles,
+    });
+  },
 };
