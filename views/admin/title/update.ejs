@@ -1,0 +1,79 @@
+<div class="br-section-wrapper">
+  <h6 class="br-section-label">UPDATE TITLE</h6>
+
+  <form action="/admin/publisher/update/<%= title.id %>" method="POST">
+    <div class="form-layout form-layout-1">
+      <div class="row mg-b-25">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="form-control-label">Title: <span class="tx-danger"></span></label>
+            <input class="form-control form-control-dark" type="text" name="name" placeholder="Enter Title" value="<%= title.name %>">
+          </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="form-control-label">Rating: <span class="tx-danger"></span></label>
+            <input class="form-control form-control-dark" type="text" name="rating" placeholder="Enter Rating" value="<%= title.rating %>">
+          </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class=" form-control-label">Publisher: <span class="tx-danger">*</span></label>
+            <select class="form-control form-control-dark select2" name="publisher" data-placeholder="Choose publisher...">
+              <option value="">Choose...</option>
+              <% publishers.forEach(function(publisher) { %>
+                <% if (publisher.id == title.publisher) { %>
+                  <option selected value="<%= publisher.id %>"><%= publisher.firstName %> <%= publisher.lastName %></option>
+                <% } else { %>
+                  <option value="<%= publisher.id %>"><%= publisher.firstName %> <%= publisher.lastName %></option>
+                <% } %>
+              <% }) %>
+            </select>
+          </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class=" form-control-label">Countries: <span class="tx-danger">*</span></label>
+            <select class="form-control form-control-dark select2" name="country" data-placeholder="Choose countries..." multiple>
+              <option value="">Choose...</option>
+              <% countries.forEach(function(country) { %>
+                <option value="<%= country.id %>"><%= country.name %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class=" form-control-label">Categories: <span class="tx-danger">*</span></label>
+            <select class="form-control form-control-dark select2" name="categories" data-placeholder="Choose categories..." multiple>
+              <option value="">Choose...</option>
+              <% categories.forEach(function(category) { %>
+                <option value="<%= category.id %>"><%= category.name %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class=" form-control-label">Issue: <span class="tx-danger">*</span></label>
+            <select class="form-control form-control-dark select2" name="issue" data-placeholder="Choose issue...">
+              <option value="">Choose...</option>
+              <% issues.forEach(function(issue) { %>
+                <% if (issue.id == title.issue) { %>
+                  <option selected value="<%= issue.id %>"><%= issue.name %></option>
+                <% } else { %>
+                  <option value="<%= issue.id %>"><%= issue.name %></option>
+                <% } %>
+              <% }) %>
+            </select>
+          </div>
+        </div><!-- col-4 -->
+      </div><!-- row -->
+
+      <div class="form-layout-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-secondary">Cancel</button>
+      </div><!-- form-layout-footer -->
+    </div><!-- form-layout -->
+  </form>
+</div>

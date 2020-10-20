@@ -1,68 +1,65 @@
 <div class="br-section-wrapper">
-  <h6 class="br-section-label">CREATE PUBLISHER</h6>
+  <h6 class="br-section-label">CREATE TITLE</h6>
 
   <form action="/admin/publisher/create" method="POST">
     <div class="form-layout form-layout-1">
       <div class="row mg-b-25">
         <div class="col-lg-4">
-
           <div class="form-group">
-            <label class=" form-control-label">Locations: <span class="tx-danger">*</span></label>
-            <select class="form-control form-control-dark select2" name="locations" data-placeholder="Choose locations..." multiple>
+            <label class="form-control-label">Title: <span class="tx-danger"></span></label>
+            <input class="form-control form-control-dark" type="text" name="name" placeholder="Enter Title">
+          </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="form-control-label">Rating: <span class="tx-danger"></span></label>
+            <input class="form-control form-control-dark" type="text" name="rating" placeholder="Enter Rating">
+          </div>
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class=" form-control-label">Publisher: <span class="tx-danger">*</span></label>
+            <select class="form-control form-control-dark select2" name="publisher" data-placeholder="Choose publisher...">
               <option value="">Choose...</option>
-              <option value="a">Ali</option>
-              <option value="b">Veli</option>
-              <option value="c">Deniz</option>
+              <% publishers.forEach(function(publisher) { %>
+                <option value="<%= publisher.id %>"><%= publisher.firstName %> <%= publisher.lastName %></option>
+              <% }) %>
             </select>
           </div>
-
+        </div><!-- col-4 -->
+        <div class="col-lg-4">
           <div class="form-group">
-            <label class="form-control-label">Firstname: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="firstName" placeholder="Enter firstname">
+            <label class=" form-control-label">Countries: <span class="tx-danger">*</span></label>
+            <select class="form-control form-control-dark select2" name="country" data-placeholder="Choose countries..." multiple>
+              <option value="">Choose...</option>
+              <% countries.forEach(function(country) { %>
+                <option value="<%= country.id %>"><%= country.name %></option>
+              <% }) %>
+            </select>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group">
-            <label class="form-control-label">Lastname: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="lastName" placeholder="Enter lastname">
+            <label class=" form-control-label">Categories: <span class="tx-danger">*</span></label>
+            <select class="form-control form-control-dark select2" name="categories" data-placeholder="Choose categories..." multiple>
+              <option value="">Choose...</option>
+              <% categories.forEach(function(category) { %>
+                <option value="<%= category.id %>"><%= category.name %></option>
+              <% }) %>
+            </select>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group">
-            <label class="form-control-label">Email address: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="text" name="email" placeholder="Enter email address">
+            <label class=" form-control-label">Issue: <span class="tx-danger">*</span></label>
+            <select class="form-control form-control-dark select2" name="issue" data-placeholder="Choose issue...">
+              <option value="">Choose...</option>
+              <% issues.forEach(function(issue) { %>
+                <option value="<%= issue.id %>"><%= issue.name %></option>
+              <% }) %>
+            </select>
           </div>
         </div><!-- col-4 -->
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label class="form-control-label">Password: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="password" name="password" placeholder="*******">
-          </div>
-        </div><!-- col-4 -->
-        <div class="col-lg-4">
-          <div class="form-group mg-b-10-force">
-            <label class="form-control-label">Company Name: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="companyName" placeholder="Enter company name">
-          </div>
-        </div><!-- col-8 -->
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label class="form-control-label">Website: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="webSite" placeholder="Enter website">
-          </div>
-        </div><!-- col-4 -->
-        <div class="col-lg-4">
-          <div class="form-group mg-b-10-force">
-            <label class="form-control-label">Address: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="address" placeholder="Enter address">
-          </div>
-        </div><!-- col-8 -->
-        <div class="col-lg-4">
-          <div class="form-group mg-b-10-force">
-            <label class="form-control-label">Phone: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="phone" placeholder="Enter phone">
-          </div>
-        </div><!-- col-8 -->
       </div><!-- row -->
 
       <div class="form-layout-footer">

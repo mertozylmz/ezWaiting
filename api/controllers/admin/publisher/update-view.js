@@ -16,16 +16,16 @@ module.exports = {
 
     let req = this.req;
 
-    let publisher = await User.findOne({
+    let publisher = await User.find({
       userRole: "USER_ROLE_PUBLISHER",
-      id: req.param("id"),
+      id: req.param('id'),
     });
 
     return exits.success({
       layout: "layouts/layout-admin",
       section: "publisher",
       subSection: "publisher-list",
-      publisher: publisher,
+      publisher: publisher
     });
   },
 };
