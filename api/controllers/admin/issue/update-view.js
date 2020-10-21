@@ -16,6 +16,13 @@ module.exports = {
     let req = this.req;
 
     let issue = await Issue.findOne({ id: req.param("id") });
+
+    let title = await Title.findOne({ id: issue.title});
+    let publisher = await User.findOne({
+      id: title.publisher,
+      userRole: 'USER_ROLE_PUBLISHER'
+    });
+
     const titles = await Title.find({ isDeleted: false });
 
     return exits.success({
@@ -23,7 +30,9 @@ module.exports = {
       section: "issue",
       subSection: "issue-list",
       issue: issue,
-      titles
+      titles,
+      title:title,
+      publisher
     });
   },
 };

@@ -22,24 +22,13 @@ module.exports = {
       let res = this.res;
       let req = this.req;
 
-      let publisher = await User.findOne({
-        id: req.param('pid'),
-        userRole: 'USER_ROLE_PUBLISHER'
-      });
+      let publisher = req.param('pid');
 
-      let title = await Title.findOne({
-        id: req.param('tid'),
-      });
+      let title = req.param('tid');
 
-      let issue = await Issue.findOne({
-        id: req.param('iid'),
-      });
+      let issue = req.param('iid');
 
-      let folderName =  `issues/${publisher.id}/${title.id}/${issue.id}`;
-
-
-      var uploadDir = process.cwd() + '/assets/uploads/' + folderName;
-      var tempDir = process.cwd() + '/.tmp/public/uploads/' + folderName;
+      let folderName =  `issues/${publisher}/${title}/${issue}`;
 
       var supportedFileFormat = ['application/pdf'];
 
@@ -54,22 +43,19 @@ module.exports = {
 
       const directoryName = `${folderName}`;
 
-      await this.req.file('file').upload({
-        dirname: uploadDir,
-        maxBytes: 100000000
-      },async function (err, uploadedFile) {
-          if (err) {
-              sails.log.error("Upload Image error:", err)
-              return exits.errorRequest();
-          }
-          var localFileDir = uploadedFile[0].fd;
-
-
-
-
+      req.file('file')
+      .upload({
+        adapter: require('skipper-azure'),
+        key: 'ezwaitingroomv2',
+        secret: 'M9pwOy08NL0dMdlHUiqy569n2ffp0JAuSVIVpMbC577dEFGESZaQbuWr45TpyhTPkK+dxVr0fofhqXR9HKjxZA==',
+        container: 'magazinefiles',
+        dirname: directoryName
+      }, function whenDone(err, uploadedFiles) {
+        if (err) return res.negotiate(err);
+        else return res.ok({
+          files: uploadedFiles,
+        });
       });
-
-
 
     } catch (error) {
       console.log("Upload pdf issue error: ", error);

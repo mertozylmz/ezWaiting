@@ -1,3 +1,45 @@
 <div class="tab-pane" id="tab-second">
-  PDF TAB
+  <div class="ht-200 bg-gray-200 d-flex align-items-center justify-content-center">
+    <form action="/admin/pdf/upload/<%= publisher.id %>/<%= title.id %>/<%= issue.id%>" method="post"
+      enctype="multipart/form-data" multiple>
+      <input type="file" name="file" id="file-upload" class="inputfile"
+        data-multiple-caption="{count} files selected" >
+      <label for="file-upload" class="tx-white bg-info">
+        <i class="icon ion-ios-upload-outline tx-24"></i>
+        <span>Choose file...</span>
+      </label>
+      <button type="submit" class="btn btn-primary btn-block mg-b-10">Upload</button>
+    </form>
+  </div>
+  <hr>
+  <div class="card bd-gray-400">
+    <table class="table mg-b-0">
+      <thead>
+        <tr>
+          <th class="tx-10-force tx-mont tx-medium">NAME</th>
+          <th class="tx-10-force tx-mont tx-medium hidden-xs-down">DATE</th>
+          <th class="wd-5p"></th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>
+          </td>
+          <td class="hidden-xs-down"><!--Created at-->></td>
+          <td class="dropdown">
+            <a href="#" data-toggle="dropdown" class="btn pd-y-3 tx-gray-500 hover-info"><i
+                class="icon ion-more"></i></a>
+            <div class="dropdown-menu dropdown-menu-right pd-10">
+              <nav class="nav nav-style-1 flex-column">
+               <!-- <a href="/uploads/gallery.id/file.path" class="nav-link" download>İndir</a>
+                <a href="/admin/media-file/destroy/file.path" class="nav-link btn-remove">Sil</a>-->
+              </nav>
+            </div><!-- dropdown-menu -->
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
 </div>
