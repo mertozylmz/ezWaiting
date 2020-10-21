@@ -1,0 +1,39 @@
+<div class="br-section-wrapper">
+  <h6 class="br-section-label">ISSUE'S LIST</h6>
+
+  <div class="table-wrapper">
+    <table id="datatable1" class="table display responsive nowrap">
+      <thead>
+        <tr>
+          <th class="wd-15p">Name</th>
+          <th class="wd-10p">Status</th>
+          <th class="wd-10p">Update</th>
+          <th class="wd-25p">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% issues.forEach(function(issue){ %>
+        <tr>
+          <td><%= issue.name %></td>
+          <td>
+            <% if (issue.status == true) { %> Active <% } else { %>
+            Passive <% } %>
+          </td>
+          <td>
+            <a href="/admin/issue/update/<%= issue.id %>">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+            </a>
+          </td>
+          <td>
+            <a class="btn-remove" href="/admin/issue/delete/<%= issue.id %>">
+              <i class="ion-trash-a" aria-hidden="true"></i>
+            </a>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <!-- table-wrapper -->
+</div>
+<!-- br-section-wrapper -->

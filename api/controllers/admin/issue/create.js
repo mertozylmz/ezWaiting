@@ -8,7 +8,20 @@ module.exports = {
 
 
   inputs: {
-
+    name: {
+      type: "string",
+      required: true
+    },
+    issueLiveDate: {
+      type: "ref",
+      required: true
+    },
+    description: {
+      type: "string"
+    },
+    status: {
+      type: "boolean"
+    }
   },
 
 
@@ -17,11 +30,24 @@ module.exports = {
   },
 
 
-  fn: async function (inputs) {
+  fn: async function (inputs, exits) {
+    try {
+      let res = this.res;
 
-    // All done.
-    return;
+      let issue = await Issue.create({
+        name: inputs.name,
+        issueLiveDate: inputs.issueLiveDate,
+        description: inputs.description,
+        status: inputs.status
+      }).fetch();
 
+      return res.redirect('/issue/update/' + issue.id);
+    } catch (error) {
+      console.log("Create issue error: ", error);
+      return exits.invalidRequest({
+        message: "Oops a problem occured.",
+      });
+    }
   }
 
 
