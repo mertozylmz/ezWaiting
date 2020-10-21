@@ -13,15 +13,22 @@ module.exports = {
 
 
   exits: {
-
+    success: {
+      responseType: "view",
+      viewTemplatePath: "admin/issue/list"
+    }
   },
 
 
-  fn: async function (inputs) {
+  fn: async function (_, exits) {
+    const issues = await Issue.find();
 
-    // All done.
-    return;
-
+    return exits.success({
+      layout: 'layouts/layout-admin',
+      section: 'issue',
+      subSection: 'issue-list',
+      issues: issues
+    });
   }
 
 
