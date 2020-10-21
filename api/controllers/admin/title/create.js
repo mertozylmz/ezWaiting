@@ -17,7 +17,7 @@ module.exports = {
     publisher: {
       type: 'ref'
     },
-    country: {
+    countries: {
       type: 'ref'
     },
     categories: {
@@ -27,23 +27,30 @@ module.exports = {
 
 
   exits: {
-
+    invalidRequest: {
+      statusCode: 500
+    }
   },
 
 
-  fn: async function (inputs) {
+  fn: async function (inputs, exits) {
+    console.log(inputs);
     try {
       let res = this.res;
 
       let title = await Title.create({
         name: inputs.name,
         rating: inputs.rating,
-        publisher: inputs.publisher,
-        country: inputs.country,
-        categories: inputs.categories
+        publisher: inputs.publisher
       }).fetch();
 
-      return res.redirect('/title/update/' + title.id);
+      const categories = Array(inputs.categories).isArray() ? inputs.categories : [inputs.categories];
+      const countries = Array(inputs.countries).isArray() ? inputs.countries : [inputs.countries];
+
+      await Title.addToCollection(title.id, 'categories').members(categories);
+      await Title.addToCollection(title.id, 'countries').members(countries);
+
+      return res.redirect('/admin/title/update/' + title.id);
     } catch (error) {
       console.log("Create title error: ", error);
       return exits.invalidRequest({
