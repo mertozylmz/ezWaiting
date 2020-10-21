@@ -17,7 +17,7 @@ module.exports = {
   fn: async function (inputs, exits) {
     let req = this.req;
 
-    let issue = await Issue.find({
+    let issue = await Issue.findOne({
       id: req.param('id'),
     });
 
