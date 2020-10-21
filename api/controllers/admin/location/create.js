@@ -54,7 +54,6 @@ module.exports = {
   fn: async function (inputs, exits) {
     try {
       let res = this.res;
-      let req = this.req;
 
       let location = await Location.create({
         name: inputs.name,
@@ -64,11 +63,10 @@ module.exports = {
         radius: inputs.radius,
         city: inputs.city,
         state: inputs.state,
-        country: inputs.country,
-        createdBy: req.user.id
+        country: inputs.country
       }).fetch();
 
-      return res.redirect('/location/update/'+location.id);
+      return res.redirect('/admin/location/update/' + location.id);
     } catch (error) {
       console.log("Location publisher error: ", error);
       return exits.invalidRequest({

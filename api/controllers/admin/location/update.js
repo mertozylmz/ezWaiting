@@ -64,8 +64,7 @@ module.exports = {
         radius: inputs.radius,
         city: inputs.city,
         state: inputs.state,
-        country: inputs.country,
-        modifiedBy: req.user.id
+        country: inputs.country
       });
 
       return res.redirect("/admin/location/update/" + req.param('id'));
