@@ -16,7 +16,7 @@ module.exports = {
 
     let req = this.req;
 
-    let publisher = await User.find({
+    let publisher = await User.findOne({
       userRole: "USER_ROLE_PUBLISHER",
       id: req.param('id'),
     });

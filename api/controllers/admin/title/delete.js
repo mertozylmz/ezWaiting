@@ -12,7 +12,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs) {
+  fn: async function (inputs, exits) {
     try {
       let req = this.req;
 

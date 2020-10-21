@@ -15,7 +15,7 @@ module.exports = {
   fn: async function (inputs, exits) {
     let req = this.req;
 
-    const title = await Title.findOne({ id: req.param("id") });
+    const title = await Title.findOne({ id: req.param("id") }).populate('categories').populate('countries');
 
     const publishers = await User.find({ userRole: "USER_ROLE_PUBLISHER" });
     const countries = await Country.find();
@@ -24,8 +24,8 @@ module.exports = {
 
     return exits.success({
       layout: "layouts/layout-admin",
-      section: "publisher",
-      subSection: "publisher-list",
+      section: "title",
+      subSection: "title-list",
       title,
       publishers,
       countries,

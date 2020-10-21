@@ -13,7 +13,7 @@ module.exports = {
   },
 
   fn: async function (inputs, exits) {
-    let categories = await Category.find();
+    let categories = await Category.find({ isDeleted: false });
 
     return exits.success({
       layout: "layouts/layout-admin",

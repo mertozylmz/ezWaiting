@@ -1,0 +1,24 @@
+<div class="br-section-wrapper">
+  <h6 class="br-section-label">UPDATE ISSUE</h6>
+
+  <div class="card">
+    <div class="card-header bg-dark">
+      <ul class="nav nav-tabs nav-tabs-for-dark card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link bd-0 active pd-y-8" href="#tab-first" data-toggle="tab">Issue</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link bd-0 pd-y-8" href="#tab-second" data-toggle="tab">Pdf</a>
+        </li>
+      </ul>
+    </div><!-- card-header -->
+    <div class="card-body color-gray-lighter">
+      <div class="tab-content">
+        <!--Tabs-customer-Form-Ejs-->
+        <%- partial('./tabs/update-tab.ejs') %>
+        <!--Tabs-customer-Form-Ejs-->
+        <%- partial('./tabs/pdf-tab.ejs') %>
+      </div><!-- tab-content -->
+    </div><!-- card-body -->
+  </div><!-- card -->
+</div>

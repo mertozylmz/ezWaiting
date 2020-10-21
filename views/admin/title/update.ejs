@@ -37,7 +37,15 @@
             <select class="form-control form-control-dark select2" name="country" data-placeholder="Choose countries..." multiple>
               <option value="">Choose...</option>
               <% countries.forEach(function(country) { %>
-                <option value="<%= country.id %>"><%= country.name %></option>
+                <% if (title.countries) { %>
+                  <% if (_.find(title.countries, o => o.id == country.id)) { %>
+                    <option selected value="<%= country.id %>"><%= country.name %></option>
+                    <% } else { %>
+                    <option value="<%= country.id %>"><%= country.name %></option>
+                  <% } %>
+                <% } else { %>
+                  <option value="<%= country.id %>"><%= country.name %></option>
+                <% } %>
               <% }) %>
             </select>
           </div>
@@ -48,21 +56,14 @@
             <select class="form-control form-control-dark select2" name="categories" data-placeholder="Choose categories..." multiple>
               <option value="">Choose...</option>
               <% categories.forEach(function(category) { %>
-                <option value="<%= category.id %>"><%= category.name %></option>
-              <% }) %>
-            </select>
-          </div>
-        </div><!-- col-4 -->
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label class=" form-control-label">Issue: <span class="tx-danger">*</span></label>
-            <select class="form-control form-control-dark select2" name="issue" data-placeholder="Choose issue...">
-              <option value="">Choose...</option>
-              <% issues.forEach(function(issue) { %>
-                <% if (issue.id == title.issue) { %>
-                  <option selected value="<%= issue.id %>"><%= issue.name %></option>
+                <% if (title.categories) { %>
+                  <% if (_.find(title.categories, o => o.id == category.id)) { %>
+                    <option selected value="<%= category.id %>"><%= category.name %></option>
+                  <% } else { %>
+                    <option value="<%= category.id %>"><%= category.name %></option>
+                  <% } %>
                 <% } else { %>
-                  <option value="<%= issue.id %>"><%= issue.name %></option>
+                  <option value="<%= category.id %>"><%= category.name %></option>
                 <% } %>
               <% }) %>
             </select>

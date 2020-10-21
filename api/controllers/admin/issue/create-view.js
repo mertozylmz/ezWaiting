@@ -14,13 +14,13 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     //Render view as return with layout.
-    const titles = await Title.find();
+    const titles = await Title.find({ isDeleted: false });
 
     return exits.success({
       layout: "layouts/layout-admin",
       section: "issue",
       subSection: "issue-create",
-      titles,
+      titles
     });
   },
 };

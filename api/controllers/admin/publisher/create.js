@@ -71,7 +71,7 @@ module.exports = {
         createdBy: req.user.id
       }).fetch();
 
-      return res.redirect('/publisher/update/'+user.id);
+      return res.redirect('/admin/publisher/update/' + user.id);
     } catch (error) {
       console.log("Create publisher error: ", error);
       return exits.invalidRequest({

@@ -15,6 +15,7 @@ module.exports = {
   fn: async function (inputs, exits) {
     let publishers = await User.find({
       userRole: "USER_ROLE_PUBLISHER",
+      isDeleted: false
     });
 
     return exits.success({

@@ -15,15 +15,15 @@ module.exports = {
   fn: async function (inputs, exits) {
     let req = this.req;
 
-    let issue = await Issue.find({
-      id: req.param("id"),
-    });
+    let issue = await Issue.findOne({ id: req.param("id") });
+    const titles = await Title.find({ isDeleted: false });
 
     return exits.success({
       layout: "layouts/layout-admin",
       section: "issue",
       subSection: "issue-list",
       issue: issue,
+      titles
     });
   },
 };

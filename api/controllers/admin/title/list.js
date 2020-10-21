@@ -8,13 +8,12 @@ module.exports = {
   exits: {
     success: {
       responseType: "view",
-      viewTemplatePath: "admin/title/list",
-    },
+      viewTemplatePath: "admin/title/list"
+    }
   },
 
   fn: async function (inputs, exits) {
-
-    let titles = await Title.find();
+    let titles = await Title.find({ isDeleted: false });
 
     return exits.success({
       layout: "layouts/layout-admin",

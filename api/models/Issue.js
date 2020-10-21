@@ -42,9 +42,9 @@ module.exports = {
     },
 
     //one-to-many relations
-    title: {
-      collection: "title",
-      via: "issue",
-    },
+    title:{
+      model: 'title',
+      unique: true
+    }
   },
 };

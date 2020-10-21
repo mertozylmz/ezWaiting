@@ -20,14 +20,10 @@ module.exports = {
   fn: async function (inputs, exits) {
     try {
       let res = this.res;
-      let req = this.req;
 
-      let user = await User.create({
-        name: inputs.name,
-        createdBy: req.user.id
-      }).fetch();
+      let category = await Category.create({ name: inputs.name }).fetch();
 
-      return res.redirect('/category/update/'+user.id);
+      return res.redirect('/admin/category/update/' + category.id);
     } catch (error) {
       console.log("Create category error: ", error);
       return exits.invalidRequest({
