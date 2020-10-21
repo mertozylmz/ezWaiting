@@ -19,7 +19,6 @@ module.exports = {
     const publishers = await User.find({ userRole: "USER_ROLE_PUBLISHER" });
     const countries = await Country.find();
     const categories = await Category.find();
-    const issues = await Issue.find();
 
     return exits.success({
       layout: 'layouts/layout-admin',
@@ -27,8 +26,7 @@ module.exports = {
       subSection :'title-create',
       publishers,
       countries,
-      categories,
-      issues
+      categories
     });
   },
 };

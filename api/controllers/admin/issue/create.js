@@ -21,6 +21,9 @@ module.exports = {
     },
     status: {
       type: "boolean"
+    },
+    title: {
+      collection: "title"
     }
   },
 
@@ -38,7 +41,8 @@ module.exports = {
         name: inputs.name,
         issueLiveDate: inputs.issueLiveDate,
         description: inputs.description,
-        status: inputs.status
+        status: inputs.status,
+        title: inputs.title
       }).fetch();
 
       return res.redirect('/issue/update/' + issue.id);
