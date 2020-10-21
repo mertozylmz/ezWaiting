@@ -46,8 +46,8 @@ module.exports = {
       req.file('file')
       .upload({
         adapter: require('skipper-azure'),
-        key: 'ezwaitingroomv2',
-        secret: 'M9pwOy08NL0dMdlHUiqy569n2ffp0JAuSVIVpMbC577dEFGESZaQbuWr45TpyhTPkK+dxVr0fofhqXR9HKjxZA==',
+        key: '',
+        secret: '',
         container: 'magazinefiles',
         dirname: directoryName
       }, function whenDone(err, uploadedFiles) {
