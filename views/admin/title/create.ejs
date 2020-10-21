@@ -30,7 +30,7 @@
         <div class="col-lg-4">
           <div class="form-group">
             <label class=" form-control-label">Countries: <span class="tx-danger">*</span></label>
-            <select class="form-control form-control-dark select2" name="country" data-placeholder="Choose countries..." multiple>
+            <select class="form-control form-control-dark select2" name="countries" data-placeholder="Choose countries..." multiple>
               <option value="">Choose...</option>
               <% countries.forEach(function(country) { %>
                 <option value="<%= country.id %>"><%= country.name %></option>
