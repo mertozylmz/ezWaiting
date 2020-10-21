@@ -1,0 +1,41 @@
+<div class="br-section-wrapper">
+  <h6 class="br-section-label">location'S LIST</h6>
+
+  <div class="table-wrapper">
+    <table id="datatable1" class="table display responsive nowrap">
+      <thead>
+        <tr>
+          <th class="wd-15p">Name</th>
+          <th class="wd-15p">Country</th>
+          <th class="wd-10p">Status</th>
+          <th class="wd-10p">Update</th>
+          <th class="wd-25p">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% locations.forEach(function(location){ %>
+        <tr>
+          <td><%= location.name %></td>
+          <td><%= location.country.name %></td>
+          <td>
+            <% if (location.isActive == true) { %> Active <% } else { %>
+            Passive <% } %>
+          </td>
+          <td>
+            <a href="/admin/location/update/<%= location.id %>">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+            </a>
+          </td>
+          <td>
+            <a class="btn-remove" href="/admin/location/delete/<%= location.id %>">
+              <i class="ion-trash-a" aria-hidden="true"></i>
+            </a>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <!-- table-wrapper -->
+</div>
+<!-- br-section-wrapper -->
