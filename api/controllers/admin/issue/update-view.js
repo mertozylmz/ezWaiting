@@ -1,28 +1,31 @@
 module.exports = {
+  friendlyName: "Update Issue View",
 
-
-  friendlyName: 'Update view',
-
-
-  description: '',
-
+  description: "Render update form for issue",
 
   inputs: {
 
   },
 
-
   exits: {
-
+    success: {
+      responseType: "view",
+      viewTemplatePath: "admin/issue/update",
+    },
   },
 
+  fn: async function (inputs, exits) {
+    let req = this.req;
 
-  fn: async function (inputs) {
+    let issue = await Issue.find({
+      id: req.param('id'),
+    });
 
-    // All done.
-    return;
-
-  }
-
-
+    return exits.success({
+      layout: 'layouts/layout-admin',
+      section: 'issue',
+      subSection :'issue-list',
+      issue: issue
+    });
+  },
 };
