@@ -49,17 +49,6 @@
             </select>
           </div>
         </div><!-- col-4 -->
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label class=" form-control-label">Issue: <span class="tx-danger">*</span></label>
-            <select class="form-control form-control-dark select2" name="issue" data-placeholder="Choose issue...">
-              <option value="">Choose...</option>
-              <% issues.forEach(function(issue) { %>
-                <option value="<%= issue.id %>"><%= issue.name %></option>
-              <% }) %>
-            </select>
-          </div>
-        </div><!-- col-4 -->
       </div><!-- row -->
 
       <div class="form-layout-footer">
