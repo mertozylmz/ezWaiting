@@ -3,9 +3,7 @@ module.exports = {
 
   description: "Render create form for issue",
 
-  inputs: {
-
-  },
+  inputs: {},
 
   exits: {
     success: {
@@ -18,15 +16,11 @@ module.exports = {
     //Render view as return with layout.
     const titles = await Title.find();
 
-    let
-
-
-
     return exits.success({
-      layout: 'layouts/layout-admin',
-      section: 'issue',
-      subSection :'issue-create',
-      titles
+      layout: "layouts/layout-admin",
+      section: "issue",
+      subSection: "issue-create",
+      titles,
     });
   },
 };

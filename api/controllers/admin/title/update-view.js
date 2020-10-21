@@ -1,16 +1,9 @@
 module.exports = {
+  friendlyName: "Update view",
 
+  description: "Render update form for title",
 
-  friendlyName: 'Update view',
-
-
-  description: 'Render update form for title',
-
-
-  inputs: {
-
-  },
-
+  inputs: {},
 
   exits: {
     success: {
@@ -19,10 +12,9 @@ module.exports = {
     },
   },
 
-
   fn: async function (inputs, exits) {
-
     let req = this.req;
+
     const title = await Title.findOne({ id: req.param("id") });
 
     const publishers = await User.find({ userRole: "USER_ROLE_PUBLISHER" });
@@ -38,9 +30,7 @@ module.exports = {
       publishers,
       countries,
       categories,
-      issues
+      issues,
     });
-  }
-
-
+  },
 };
