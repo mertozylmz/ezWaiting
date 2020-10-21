@@ -1,50 +1,24 @@
 <div class="br-section-wrapper">
   <h6 class="br-section-label">UPDATE ISSUE</h6>
 
-  <form action="/admin/issue/update/<%= issue.id %>" method="POST">
-    <div class="form-layout form-layout-1">
-      <div class="row mg-b-25">
-        <div class="col-lg-6">
-          <div class="form-group">
-            <label class="form-control-label">Name: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="name" placeholder="Enter Name" value="<%= issue.name %>">
-          </div>
-        </div><!-- col-4 -->
-        <div class="col-lg-6">
-          <div class="form-group">
-            <label class="form-control-label">Live Date: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="issueLiveDate" placeholder="Enter Date" value="<%= issue.issueLiveDate %>">
-          </div>
-        </div><!-- col-4 -->
-        <div class="col-lg-12">
-          <div class="form-group">
-            <label class="form-control-label">Description: <span class="tx-danger"></span></label>
-            <textarea class="form-control form-control-dark summernote" name="description" placeholder="Enter Description">
-              <%= issue.description %>
-            </textarea>
-          </div>
-        </div><!-- col-4 -->
-        <div class="col-lg-12">
-          <div class="form-group">
-            <label class="form-control-label">Status: <span class="tx-danger"></span></label>
-            <select class="form-control form-control-dark select2" name="status" data-placeholder="Choose Status...">
-              <option value="">Choose...</option>
-              <% if (issue.status) { %>
-                <option selected value="true">Active</option>
-                <option value="false">Passive</option>
-              <% } else { %>
-                <option value="true">Active</option>
-                <option selected value="false">Passive</option>
-              <% } %>
-            </select>
-          </div>
-        </div><!-- col-4 -->
-      </div><!-- row -->
-
-      <div class="form-layout-footer">
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <button type="reset" class="btn btn-secondary">Cancel</button>
-      </div><!-- form-layout-footer -->
-    </div><!-- form-layout -->
-  </form>
+  <div class="card">
+    <div class="card-header bg-dark">
+      <ul class="nav nav-tabs nav-tabs-for-dark card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link bd-0 active pd-y-8" href="#tab-first" data-toggle="tab">Issue</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link bd-0 pd-y-8" href="#tab-second" data-toggle="tab">Pdf</a>
+        </li>
+      </ul>
+    </div><!-- card-header -->
+    <div class="card-body color-gray-lighter">
+      <div class="tab-content">
+        <!--Tabs-customer-Form-Ejs-->
+        <%- partial('./tabs/update-tab.ejs') %>
+        <!--Tabs-customer-Form-Ejs-->
+        <%- partial('./tabs/pdf-tab.ejs') %>
+      </div><!-- tab-content -->
+    </div><!-- card-body -->
+  </div><!-- card -->
 </div>
