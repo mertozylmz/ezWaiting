@@ -30,10 +30,6 @@ module.exports = {
       model: "user",
     },
 
-    country: {
-      model: "country",
-    },
-
     // many-to-many relations
 
     locations: {
@@ -44,6 +40,11 @@ module.exports = {
     categories: {
       collection: "category",
       via: "titles",
+    },
+
+    countries: {
+      collection: "country",
+      via: 'titles'
     },
 
     //one-to-one relations
