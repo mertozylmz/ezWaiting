@@ -1,16 +1,9 @@
 module.exports = {
+  friendlyName: "List titles",
 
+  description: "Render title list.",
 
-  friendlyName: 'List',
-
-
-  description: 'List title.',
-
-
-  inputs: {
-
-  },
-
+  inputs: {},
 
   exits: {
     success: {
@@ -19,19 +12,14 @@ module.exports = {
     }
   },
 
-
   fn: async function (inputs, exits) {
-
-    const titles = await Title.find();
+    let titles = await Title.find();
 
     return exits.success({
-      layout: 'layouts/layout-admin',
-      section: 'title',
-      subSection: 'title-list',
-      titles: titles
+      layout: "layouts/layout-admin",
+      section: "title",
+      subSection: "title-list",
+      titles: titles,
     });
-
-  }
-
-
+  },
 };

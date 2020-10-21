@@ -18,6 +18,10 @@ module.exports = {
     //Render view as return with layout.
     const titles = await Title.find();
 
+    let
+
+
+
     return exits.success({
       layout: 'layouts/layout-admin',
       section: 'issue',

@@ -6,6 +6,7 @@
       <thead>
         <tr>
           <th class="wd-15p">Name</th>
+          <th class="wd-15p">Rating</th>
           <th class="wd-10p">Status</th>
           <th class="wd-10p">Update</th>
           <th class="wd-25p">Delete</th>
@@ -15,6 +16,7 @@
         <% titles.forEach(function(title){ %>
         <tr>
           <td><%= title.name %></td>
+          <td><%= title.rating %></td>
           <td>
             <% if (title.isActive == true) { %> Active <% } else { %>
             Passive <% } %>
