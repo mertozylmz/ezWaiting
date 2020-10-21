@@ -13,7 +13,7 @@ module.exports = {
       required: true
     },
     issueLiveDate: {
-      type: "ref",
+      type: "string",
       required: true
     },
     description: {
@@ -23,7 +23,7 @@ module.exports = {
       type: "boolean"
     },
     title: {
-      collection: "title"
+      type: "ref"
     }
   },
 
