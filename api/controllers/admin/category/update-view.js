@@ -16,8 +16,8 @@ module.exports = {
 
     let req = this.req;
 
-    let category = await Category.find({
-      id: req.param('id'),
+    let category = await Category.findOne({
+      id: req.param('id')
     });
 
     return exits.success({
