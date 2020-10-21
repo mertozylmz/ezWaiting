@@ -23,15 +23,15 @@ module.exports = {
       type: "boolean"
     },
     title: {
-      collection: "title"
+      type: 'string'
     }
   },
 
-
   exits: {
-
+    invalidRequest: {
+      statusCode: 500,
+    },
   },
-
 
   fn: async function (inputs, exits) {
     try {

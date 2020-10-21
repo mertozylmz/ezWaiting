@@ -3,9 +3,7 @@ module.exports = {
 
   description: "Render update form for issue",
 
-  inputs: {
-
-  },
+  inputs: {},
 
   exits: {
     success: {
@@ -18,14 +16,14 @@ module.exports = {
     let req = this.req;
 
     let issue = await Issue.find({
-      id: req.param('id'),
+      id: req.param("id"),
     });
 
     return exits.success({
-      layout: 'layouts/layout-admin',
-      section: 'issue',
-      subSection :'issue-list',
-      issue: issue
+      layout: "layouts/layout-admin",
+      section: "issue",
+      subSection: "issue-list",
+      issue: issue,
     });
   },
 };

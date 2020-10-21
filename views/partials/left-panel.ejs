@@ -26,6 +26,22 @@
         </li>
       </ul>
     </li>
+
+        <!-- br-menu-item -->
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub <% if (section == 'category') { %>active show-sub<% } %>">
+            <i class="menu-item-icon ion-ios-copy-outline tx-20"></i>
+            <span class="menu-item-label">Category</span> </a
+          ><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            <li class="sub-item">
+              <a href="/admin/category/create" class="sub-link <% if (subSection == 'category-create') { %>active<% } %>">Create a category</a>
+            </li>
+            <li class="sub-item">
+              <a href="/admin/category/list" class="sub-link <% if (subSection == 'category-list') { %>active<% } %>">Categories list</a>
+            </li>
+          </ul>
+        </li>
     <!-- br-menu-item -->
     <li class="br-menu-item">
       <a href="#" class="br-menu-link with-sub <% if (section == 'title') { %>active show-sub<% } %>">
