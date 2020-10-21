@@ -34,7 +34,6 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
-    console.log(inputs);
     try {
       let res = this.res;
 
@@ -44,8 +43,8 @@ module.exports = {
         publisher: inputs.publisher
       }).fetch();
 
-      const categories = Array(inputs.categories).isArray() ? inputs.categories : [inputs.categories];
-      const countries = Array(inputs.countries).isArray() ? inputs.countries : [inputs.countries];
+      const categories = Array.isArray(inputs.categories) ? inputs.categories : [inputs.categories];
+      const countries = Array.isArray(inputs.countries) ? inputs.countries : [inputs.countries];
 
       await Title.addToCollection(title.id, 'categories').members(categories);
       await Title.addToCollection(title.id, 'countries').members(countries);

@@ -23,7 +23,7 @@ module.exports = {
       type: "boolean"
     },
     title: {
-      type: 'string'
+      type: 'ref'
     }
   },
 
@@ -45,7 +45,7 @@ module.exports = {
         title: inputs.title
       }).fetch();
 
-      return res.redirect('/issue/update/' + issue.id);
+      return res.redirect('/admin/issue/update/' + issue.id);
     } catch (error) {
       console.log("Create issue error: ", error);
       return exits.invalidRequest({

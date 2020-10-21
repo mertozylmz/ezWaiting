@@ -48,9 +48,9 @@ module.exports = {
     },
 
     //one-to-one relations
-    issue:{
-      model:'issue',
-      unique: true
-    }
+    issue: {
+      collection: "issue",
+      via: "title"
+    },
   },
 };

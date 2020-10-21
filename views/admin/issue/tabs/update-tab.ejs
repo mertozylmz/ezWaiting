@@ -22,7 +22,22 @@
             </textarea>
           </div>
         </div><!-- col-4 -->
-        <div class="col-lg-12">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class=" form-control-label">Title: <span class="tx-danger">*</span></label>
+            <select class="form-control form-control-dark select2" name="title" data-placeholder="Choose publisher...">
+              <option value="">Choose...</option>
+              <% titles.forEach(function(title) { %>
+                <% if (title.id == issue.title) { %>
+                  <option selected value="<%= title.id %>"><%= title.name %></option>
+                <% } else { %>
+                  <option value="<%= title.id %>"><%= title.name %></option>
+                <% } %>
+              <% }) %>
+            </select>
+          </div>
+        </div><!-- col-6 -->
+        <div class="col-lg-6">
           <div class="form-group">
             <label class="form-control-label">Status: <span class="tx-danger"></span></label>
             <select class="form-control form-control-dark select2" name="status" data-placeholder="Choose Status...">

@@ -25,14 +25,14 @@
         <div class="col-lg-6">
           <div class="form-group">
             <label class=" form-control-label">Title: <span class="tx-danger">*</span></label>
-            <select class="form-control form-control-dark select2" name="publisher" data-placeholder="Choose publisher...">
+            <select class="form-control form-control-dark select2" name="title" data-placeholder="Choose publisher...">
               <option value="">Choose...</option>
               <% titles.forEach(function(title) { %>
                 <option value="<%= title.id %>"><%= title.name %></option>
               <% }) %>
             </select>
           </div>
-        </div><!-- col-4 -->
+        </div><!-- col-6 -->
         <div class="col-lg-6">
           <div class="form-group">
             <label class="form-control-label">Status: <span class="tx-danger"></span></label>
@@ -42,7 +42,7 @@
               <option value="false">Passive</option>
             </select>
           </div>
-        </div><!-- col-4 -->
+        </div><!-- col-6 -->
       </div><!-- row -->
 
       <div class="form-layout-footer">
