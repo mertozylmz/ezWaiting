@@ -52,7 +52,7 @@ module.exports.datastores = {
     //url: 'mongodb://localhost/ezWaiting_db'
 
     adapter: 'sails-mongo',
-    url: 'mongodb://ezwaiting:123qwe4Ez!@ezwaiting.e3p2m.mongodb.net/ezwaiting_db?retryWrites=true&w=majority'
+    url: 'mongodb://ezwaiting:123qwe4Ez!@ezwaiting.e3p2m.mongodb.net/ezwaiting_db'
 
   },
 
