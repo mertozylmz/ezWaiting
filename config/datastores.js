@@ -48,8 +48,11 @@ module.exports.datastores = {
     *    (See https://sailsjs.com/config/datastores for help.)                 *
     *                                                                          *
     ***************************************************************************/
+    //adapter: 'sails-mongo',
+    //url: 'mongodb://localhost/ezWaiting_db'
+
     adapter: 'sails-mongo',
-    url: 'mongodb://localhost/ezWaiting_db'
+    url: 'mongodb://ezwaiting:123qwe4Ez!@ezwaiting.e3p2m.mongodb.net/ezwaiting_db?retryWrites=true&w=majority'
 
   },
 
