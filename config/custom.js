@@ -24,5 +24,9 @@ module.exports.custom = {
   errorCodes: {
     invalidAppName: { code: '401', message: 'Application key is invalid.'},
     noAppName: {code: '027', message: 'No app_name header found' },
+    invalidAccessToken: { code: '028', message: 'Invalid access token'},
+    invalidAccessTokenFormat: { code: '029', message: 'Format is Authorization: Bearer [token]' },
+    noAuthHeader: { code: '030', message: 'No authorization header found'},
+    noAccessToken: { code: '031', message: 'No access token found'},
   },
 };

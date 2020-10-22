@@ -44,9 +44,9 @@ module.exports.routes = {
   "GET /admin/user/create": { action: "admin/user/create-view" },
   "POST /admin/user/create": { action: "admin/user/create" },
   "GET /admin/user/list": { action: "admin/user/list" },
-  "GET /admin/user/update": { action: "admin/user/update-view" },
-  "POST /admin/user/update": { action: "admin/user/update" },
-  "GET /admin/user/create": { action: "admin/user/delete" },
+  "GET /admin/user/update/:id": { action: "admin/user/update-view" },
+  "POST /admin/user/update/:id": { action: "admin/user/update" },
+  "GET /admin/user/delete/:id": { action: "admin/user/delete" },
 
   //Admin-Issue Routes
   "GET /admin/issue/create": { action: "admin/issue/create-view" },

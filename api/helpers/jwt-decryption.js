@@ -15,18 +15,17 @@ module.exports = {
 
   exits: {
     success: {
-      friendlyName: "Decrypted user details",
-      description: "Decrypted to get the user id",
+      friendlyName: "Decrypted device details",
+      description: "Decrypted to get the device id",
     },
   },
 
   fn: async function (inputs, exits) {
-    var jwtEncrypt = require("jwt-token-encrypt");
+    var jwt = require("jsonwebtoken");
     try {
-      const decrypted = jwtEncrypt.readJWT(
-        inputs.token,
-        sails.config.custom.jwtEncryption
-      );
+
+      var decrypted = jwt.verify(inputs.token, sails.config.custom.privateKey);
+
       return exits.success(decrypted);
     } catch (error) {
       // to catch all invalid token error

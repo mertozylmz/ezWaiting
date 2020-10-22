@@ -1,50 +1,92 @@
+module.exports = async function (req, res, next) {
+  var token;
 
-module.exports = async function(req, res, next) {
+  //Check if authorization header is present
+  if (req.headers && req.headers.authorization) {
+    //authorization header is present
 
-	var token;
+    var parts = req.headers.authorization.split(" ");
 
-	//Check if authorization header is present
-	if(req.headers && req.headers.authorization) {
+    if (parts.length == 2) {
+      var scheme = parts[0];
 
-    console.log(req.headers.authorization);
-		//authorization header is present
+      var credentials = parts[1];
 
-		var parts = req.headers.authorization.split(' ');
+      if (/^Bearer$/i.test(scheme)) {
+        token = credentials;
+      }
+    } else {
+      return res
+        .status(401)
+        .json({
+          errors: [
+            {
+              code:
+                sails.config.custom.errorCodes.invalidAccessTokenFormat.code,
+              message:
+                sails.config.custom.errorCodes.invalidAccessTokenFormat.message,
+            },
+          ],
+        });
+    }
+  } else {
+    //authorization header is not present
+    return res
+      .status(401)
+      .json({
+        errors: [
+          {
+            code: sails.config.custom.errorCodes.noAuthHeader.code,
+            message: sails.config.custom.errorCodes.noAuthHeader.message,
+          },
+        ],
+      });
+  }
 
-		if(parts.length == 2) {
+  if (
+    token == null ||
+    token == undefined ||
+    token == "undefined" ||
+    token == "null" ||
+    token == ""
+  ) {
+    return res
+      .status(401)
+      .json({
+        errors: [
+          {
+            code: sails.config.custom.errorCodes.noAccessToken.code,
+            message: sails.config.custom.errorCodes.noAccessToken.message,
+          },
+        ],
+      });
+  }
 
-			var scheme = parts[0];
+  const decrypted = await sails.helpers.jwtDecryption(token);
 
-			var credentials = parts[1];
+  var registeredDevice;
 
-			if(/^Bearer$/i.test(scheme)) {
-				token = credentials;
-			}
-		} else {
-			return res.status(401).json({errors: [{code:sails.config.custom.errorCodes.invalidAccessTokenFormat.code, message: sails.config.custom.errorCodes.invalidAccessTokenFormat.message}]});
-		}
-	} else {
+  if (decrypted) {
+    registeredDevice = await Device.findOne({
+      deviceId: decrypted.deviceId,
+      isDeleted: false,
+      isActive: true,
+    });
+  }
 
-		//authorization header is not present
-		return res.status(401).json({errors: [{code:sails.config.custom.errorCodes.noAuthHeader.code, message: sails.config.custom.errorCodes.noAuthHeader.message}]});
-	}
-	if(token == null || token == undefined || token == "undefined" || token == "null" || token == ""){
-		return res.status(401).json({errors: [{code:sails.config.custom.errorCodes.noAccessToken.code, message: sails.config.custom.errorCodes.noAccessToken.message}]});
-	}
-	const decrypted = await sails.helpers.jwtDecryption(token);
-	var loggedInUser;
-	if(decrypted) {
-		loggedInUser = await User.findOne({
-			id: decrypted.data.userId,
-			isDeleted: false,
-			isActive: true
-		}).decrypt();
-	}
-
-	if(loggedInUser == undefined){
-		// invalid access token
-		return res.status(401).json({errors: [{code:sails.config.custom.errorCodes.invalidAccessToken.code, message: sails.config.custom.errorCodes.invalidAccessToken.message}]});;
-	}
-	req.authUser = loggedInUser;
-	next();
+  if (registeredDevice == undefined) {
+    // invalid access token
+    return res
+      .status(401)
+      .json({
+        errors: [
+          {
+            code: sails.config.custom.errorCodes.invalidAccessToken.code,
+            message: sails.config.custom.errorCodes.invalidAccessToken.message,
+          },
+        ],
+      });
+  }
+  req.authDevice = registeredDevice;
+  next();
 };
