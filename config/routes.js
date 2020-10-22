@@ -92,7 +92,7 @@ module.exports.routes = {
   "POST /admin/pdf/upload/:pid/:tid/:iid": {action: "admin/issue/pdf-upload"},
 
   //Mobil App API Routes
-  "POST /api/v1/device":  {action: "app/register-update-device-info"},
+  "POST /api/v1/device":  {action: "app/security/register-update-device-info"},
   "GET /api/v1/magazines/all/page/:page": {action: "app/get-magazine-latest-issue-category"},
   "GET /api/v1/magazines/carousel/:page": {action: "app/get-carousel-magazines-issues"},
   "GET /api/v1/magazines/category": {action: "app/get-categories-list"},

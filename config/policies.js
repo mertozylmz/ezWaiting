@@ -22,4 +22,9 @@ module.exports.policies = {
 
   //Publisher Routes
   'admin/publisher/*': 'isAuthenticated',
+
+  //API Route Policies
+  'app/security/*': ['isAppNameValid'],
+  'app/*': ['isAppNameValid','isTokenAuthenticated'],
+
 };
