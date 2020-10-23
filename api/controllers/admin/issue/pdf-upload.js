@@ -50,11 +50,16 @@ module.exports = {
         secret: '',
         container: 'magazinefiles',
         dirname: directoryName
-      }, function whenDone(err, uploadedFiles) {
+      }, async function whenDone(err, uploadedFiles) {
         if (err) return res.negotiate(err);
-        else return res.ok({
-          files: uploadedFiles,
+
+        await Pdf.create({
+          link: `https://ezwaitingroomv2.blob.core.windows.net/magazinefiles/issues/${directoryName}`,
+          issue: `issue`
         });
+
+        return res.redirect('/admin/issue/update/issue');
+
       });
 
     } catch (error) {
