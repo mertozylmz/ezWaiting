@@ -1,5 +1,5 @@
 /**
- * Title.js
+ * FreeSession.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -10,52 +10,31 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    name: {
-      type: "string",
-      description: "Name of the magazine/title",
+    startTimeInSec: {
+      type: "number",
+      description: "Start time of free session.",
     },
-
-    rating: {
-      type: "string",
-      description: "Rating of the magazine/title",
+    endTimeInSec: {
+      type: "number",
+      description: "Start time of free session.",
     },
-
-    isCarousel: {
+    currentTimeInSec: {
+      type: "number",
+      description: "Start time of free session.",
+    },
+    isEzWaitingRoom: {
       type: "boolean",
-      description: "Check if title is carousel title",
     },
+
+    //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
+    //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
+    //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
 
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-
-    // one-to-many relations
-
-    publisher: {
-      model: "user",
-    },
-
-    // many-to-many relations
-
-    locations: {
-      collection: "location",
-      via: "titles",
-    },
-
-    categories: {
-      collection: "category",
-      via: "titles",
-    },
-
-    countries: {
-      collection: "country",
-      via: "titles",
-    },
-
-    //one-to-one relations
-    issue: {
-      collection: "issue",
-      via: "title",
+    location: {
+      model: "location",
     },
   },
 };
