@@ -16,6 +16,8 @@ module.exports = {
       layout: "layouts/layout-admin",
       section: "",
       subSection: "",
+      mainName: "Dashboard",
+      mainSubName: "Dashboard",
     });
   },
 };

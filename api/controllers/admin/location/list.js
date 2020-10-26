@@ -19,6 +19,8 @@ module.exports = {
       layout: "layouts/layout-admin",
       section: "location",
       subSection: "location-list",
+      mainName: 'Location',
+      mainSubName: 'Location List',
       locations: locations,
     });
   },

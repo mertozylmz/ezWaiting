@@ -12,13 +12,35 @@ module.exports = {
     },
   },
 
-  fn: async function (_, exits) {
-    const issues = await Issue.find();
+  fn: async function (inputs, exits) {
+    let req = this.req;
+
+    let userId = req.session.passport.user;
+
+    let loggedInUser = await User.findOne({
+      id: userId,
+    });
+
+    let issues;
+
+    if (loggedInUser.userRole == "USER_ROLE_PUBLISHER") {
+      let titles = await Title.find({
+        publisher: userId,
+      }).populate("issues");
+
+      for (var i = 0; i < titles.length; i++) {
+        issues.push(titles[i].issues);
+      }
+    } else {
+      issues = await Issue.find();
+    }
 
     return exits.success({
       layout: "layouts/layout-admin",
       section: "issue",
       subSection: "issue-list",
+      mainName: "Issue",
+      mainSubName: "Issue List",
       issues: issues,
     });
   },

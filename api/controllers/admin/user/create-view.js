@@ -20,7 +20,9 @@ module.exports = {
     return exits.success({
       layout: 'layouts/layout-admin',
       section: 'user',
-      subSection :'user-create'
+      subSection :'user-create',
+      mainName: 'User',
+      mainSubName: 'User Create',
     });
   },
 };

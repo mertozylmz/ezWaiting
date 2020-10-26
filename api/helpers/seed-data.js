@@ -155,6 +155,8 @@ module.exports = {
             email: "admin@ezwaiting.com",
             password: "12345678",
             userRole: "USER_ROLE_SUPER_ADMIN",
+            firstName: "Admin",
+            lastName: "Admin"
           },
         ]);
 

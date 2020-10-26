@@ -24,8 +24,11 @@ module.exports = {
     return exits.success({
       layout: "layouts/layout-admin",
       section: "user",
+      subSection: 'user-list',
       user: "user-list",
-      user: publisher,
+      mainName: 'User',
+      mainSubName: 'User Update',
+      user: user,
     });
   },
 };

@@ -21,6 +21,8 @@ module.exports = {
       layout: "layouts/layout-admin",
       section: "user",
       subSection: "user-list",
+      mainName: 'User',
+      mainSubName: 'User List',
       users: users,
     });
   },

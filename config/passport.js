@@ -31,6 +31,8 @@ passport.use(
       try {
         user = await User.findOne({
           email: email,
+          isActive: true,
+          isDeleted:false
         });
 
         if (!user) {

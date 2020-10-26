@@ -15,9 +15,30 @@ module.exports = {
   fn: async function (inputs, exits) {
     let req = this.req;
 
-    const title = await Title.findOne({ id: req.param("id") }).populate('categories').populate('countries');
+    let userId = req.session.passport.user
 
-    const publishers = await User.find({ userRole: "USER_ROLE_PUBLISHER" });
+    let loggedInUser = await User.findOne({
+      id: userId,
+    });
+
+    let reqParams;
+    let publishers;
+
+    if(loggedInUser.userRole == 'USER_ROLE_PUBLISHER'){
+      publishers = loggedInUser;
+      reqParams = {
+        id: req.param('id'),
+        publisher: userId
+      }
+    }else{
+      publishers = await User.find({ userRole: "USER_ROLE_PUBLISHER" });
+      reqParams = {
+        id: req.param('id'),
+      }
+    }
+
+    const title = await Title.findOne(reqParams).populate('categories').populate('countries');
+
     const countries = await Country.find();
     const categories = await Category.find();
     const issues = await Issue.find();
@@ -26,6 +47,8 @@ module.exports = {
       layout: "layouts/layout-admin",
       section: "title",
       subSection: "title-list",
+      mainName: 'Title',
+      mainSubName: 'Title Update',
       title,
       publishers,
       countries,

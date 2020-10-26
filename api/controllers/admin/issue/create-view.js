@@ -14,12 +14,18 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     //Render view as return with layout.
-    const titles = await Title.find({ isDeleted: false });
+
+
+    let userId = req.session.passport.user
+
+    const titles = await Title.find({ publisher: userId,isDeleted: false });
 
     return exits.success({
       layout: "layouts/layout-admin",
       section: "issue",
       subSection: "issue-create",
+      mainName: 'Issue',
+      mainSubName: 'Issue Create',
       titles
     });
   },

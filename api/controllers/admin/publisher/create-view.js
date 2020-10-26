@@ -20,7 +20,9 @@ module.exports = {
     return exits.success({
       layout: 'layouts/layout-admin',
       section: 'publisher',
-      subSection :'publisher-create'
+      subSection :'publisher-create',
+      mainName: 'Publisher',
+      mainSubName: 'Publisher Create'
     });
   },
 };

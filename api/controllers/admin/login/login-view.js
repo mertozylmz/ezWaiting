@@ -15,6 +15,13 @@ module.exports = {
   fn: async function (inputs, exits) {
     //Render view as return with layout.
 
+    let res = this.res;
+    let req= this.req;
+
+    if(req.user){
+      res.redirect('/admin/dashboard');
+    }
+
     return exits.success({layout: 'layouts/layout-login'});
   },
 };

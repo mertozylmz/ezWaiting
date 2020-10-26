@@ -12,11 +12,12 @@ module.exports = {
     },
   },
 
-  fn: async function (inputs,exits) {
-
+  fn: async function (inputs, exits) {
     let req = this.req;
 
-    let location = await Location.findOne({id: req.param("id")}).populate('country');
+    let location = await Location.findOne({ id: req.param("id") }).populate(
+      "country"
+    );
 
     let countries = await Country.find();
 
@@ -24,8 +25,10 @@ module.exports = {
       layout: "layouts/layout-admin",
       section: "location",
       subSection: "location-list",
+      mainName: "Location",
+      mainSubName: "Location Update",
       location: location,
-      countries:countries
+      countries: countries,
     });
   },
 };

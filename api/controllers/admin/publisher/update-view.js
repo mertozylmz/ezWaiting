@@ -25,6 +25,8 @@ module.exports = {
       layout: "layouts/layout-admin",
       section: "publisher",
       subSection: "publisher-list",
+      mainName: 'Publisher',
+      mainSubName: 'Publisher Update',
       publisher: publisher
     });
   },

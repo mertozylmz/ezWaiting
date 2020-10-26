@@ -17,18 +17,14 @@ module.exports = {
 
     let issue = await Issue.findOne({ id: req.param("id") });
 
-    let title = await Title.findOne({ id: issue.title});
-    let publisher = await User.findOne({
-      id: title.publisher,
-      userRole: 'USER_ROLE_PUBLISHER'
-    });
-
     const titles = await Title.find({ isDeleted: false });
 
     return exits.success({
       layout: "layouts/layout-admin",
       section: "issue",
       subSection: "issue-list",
+      mainName: 'Issue',
+      mainSubName: 'Issue Update',
       issue: issue,
       titles,
       title:title,

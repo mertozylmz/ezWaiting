@@ -21,6 +21,8 @@ module.exports = {
       layout: 'layouts/layout-admin',
       section: 'location',
       subSection :'location-create',
+      mainName: 'Location',
+      mainSubName: 'Location Create',
       countries:countries
     });
   },

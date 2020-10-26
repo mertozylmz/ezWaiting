@@ -35,6 +35,7 @@ module.exports.routes = {
 
   "GET /auth/login": { action: "admin/login/login-view" },
   "POST /auth/login": { action: "admin/login/login" },
+  "GET /auth/logout": {action: "admin/login/logout"},
 
   //Admin Routes
 

@@ -20,7 +20,9 @@ module.exports = {
     return exits.success({
       layout: 'layouts/layout-admin',
       section: 'category',
-      subSection :'category-create'
+      subSection :'category-create',
+      mainName: 'Category',
+      mainSubName: 'Category Create'
     });
   },
 };

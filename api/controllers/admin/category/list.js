@@ -19,6 +19,8 @@ module.exports = {
       layout: "layouts/layout-admin",
       section: "category",
       subSection: "category-list",
+      mainName: 'Category',
+      mainSubName: 'Category List',
       categories: categories,
     });
   },
