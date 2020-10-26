@@ -17,19 +17,15 @@ module.exports = {
 
     let userId = req.session.passport.user;
 
-    let loggedInUser = await User.findOne({
-      id: userId,
-    });
+    let loggedInUser = await User.findOne({ id: userId });
 
-    let issues;
+    let issues = [];
 
     if (loggedInUser.userRole == "USER_ROLE_PUBLISHER") {
-      let titles = await Title.find({
-        publisher: userId,
-      }).populate("issues");
+      let titles = await Title.find({ publisher: userId, isDeleted: false }).populate("issue");
 
       for (var i = 0; i < titles.length; i++) {
-        issues.push(titles[i].issues);
+        if (titles[i].issue) issues.push(...titles[i].issue);
       }
     } else {
       issues = await Issue.find();

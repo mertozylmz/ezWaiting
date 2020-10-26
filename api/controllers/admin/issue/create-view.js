@@ -14,11 +14,11 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     //Render view as return with layout.
-
+    let req = this.req;
 
     let userId = req.session.passport.user
 
-    const titles = await Title.find({ publisher: userId,isDeleted: false });
+    const titles = await Title.find({ publisher: userId, isDeleted: false, isActive: true });
 
     return exits.success({
       layout: "layouts/layout-admin",

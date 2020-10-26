@@ -13,7 +13,7 @@ module.exports = {
   },
 
   fn: async function (inputs, exits) {
-    let locations = await Location.find().populate('country');
+    let locations = await Location.find({ isDeleted: false }).populate('country');
 
     return exits.success({
       layout: "layouts/layout-admin",

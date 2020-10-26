@@ -1,7 +1,7 @@
 <div class="br-section-wrapper">
   <h6 class="br-section-label">UPDATE TITLE</h6>
 
-  <form action="/admin/publisher/update/<%= title.id %>" method="POST">
+  <form action="/admin/title/update/<%= title.id %>" method="POST">
     <div class="form-layout form-layout-1">
       <div class="row mg-b-25">
         <div class="col-lg-4">
@@ -34,7 +34,7 @@
         <div class="col-lg-4">
           <div class="form-group">
             <label class=" form-control-label">Countries: <span class="tx-danger">*</span></label>
-            <select class="form-control form-control-dark select2" name="country" data-placeholder="Choose countries..." multiple>
+            <select class="form-control form-control-dark select2" name="countries" data-placeholder="Choose countries..." multiple>
               <option value="">Choose...</option>
               <% countries.forEach(function(country) { %>
                 <% if (title.countries) { %>

@@ -17,7 +17,7 @@ module.exports = {
     publisher: {
       type: 'ref'
     },
-    country: {
+    countries: {
       type: 'ref'
     },
     categories: {
@@ -42,7 +42,7 @@ module.exports = {
         name: inputs.name,
         rating: inputs.rating,
         publisher: inputs.publisher,
-        country: inputs.country,
+        countries: inputs.countries,
         categories: inputs.categories
       });
 
