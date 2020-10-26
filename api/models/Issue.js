@@ -27,7 +27,7 @@ module.exports = {
     },
 
     status: {
-      type: "boolean",
+      type: "string",
       description: "What is the status of the issue uploaded. pending | processed | ready-to-publish | published | rejected| deleted",
     },
 

@@ -20,20 +20,17 @@ module.exports = {
     try {
       let req = this.req;
 
-      let category = await Category.findOne({ id: req.param("category") });
-
       let limit = 20;
 
       let titles = await Title.find({
         where: {
           isActive: true,
           isDeleted: false,
-          category: category,
           isCarousel: true,
         },
         skip: (req.param("page") - 1) * limit,
         limit: limit,
-      }).populate("issues", {
+      }).populate("issue", {
         sort: "createdAt DESC",
         limit: 1,
         where: {
@@ -46,7 +43,7 @@ module.exports = {
           isActive: true,
           isDeleted: false,
         },
-      }).populate("issues", {
+      }).populate("issue", {
         sort: "createdAt DESC",
         limit: 1,
         where: {

@@ -60,7 +60,7 @@ module.exports = {
 
       let nearestPoint = mainSortedPoints[0];
 
-      if (nearestPoint.distance <= nearestPoint.radius) {
+      if (mainSortedPoints && mainSortedPoints.length > 0 && nearestPoint.distance <= nearestPoint.radius) {
         let freeSession = await FreeSession.create({
           isEzWaitingRoom: true,
           locationId: nearestPoint.location,
