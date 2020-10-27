@@ -21,12 +21,7 @@ module.exports.policies = {
 
   //Publisher Routes
   "admin/category/*": ["isAuthenticated", "isRoleAdmin", "isAllGranted"],
-  "admin/issue/*": [
-    "isAuthenticated",
-    "isRoleAdmin",
-    "isRolePublisher",
-    "isAllGranted",
-  ],
+  "admin/issue/*": true,
   "admin/location/*": ["isAuthenticated", "isRoleAdmin", "isAllGranted"],
   "admin/publisher/*": ["isAuthenticated", "isRoleAdmin", "isAllGranted"],
   "admin/title/*": [

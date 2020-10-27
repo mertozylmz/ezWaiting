@@ -16,17 +16,31 @@ module.exports = {
     //Render view as return with layout.
     let req = this.req;
 
-    let userId = req.session.passport.user
+    let userId = req.session.passport.user;
 
-    const titles = await Title.find({ publisher: userId, isDeleted: false, isActive: true });
+    let user = await User.findOne({
+      id: userId,
+    });
+
+    let titles;
+
+    if (user.userRole == "USER_ROLE_PUBLISHER") {
+      titles = await Title.find({
+        publisher: userId,
+        isDeleted: false,
+        isActive: true,
+      });
+    } else {
+      titles = await Title.find({ isDeleted: false, isActive: true });
+    }
 
     return exits.success({
       layout: "layouts/layout-admin",
       section: "issue",
       subSection: "issue-create",
-      mainName: 'Issue',
-      mainSubName: 'Issue Create',
-      titles
+      mainName: "Issue",
+      mainSubName: "Issue Create",
+      titles,
     });
   },
 };

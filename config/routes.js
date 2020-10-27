@@ -35,7 +35,7 @@ module.exports.routes = {
 
   "GET /auth/login": { action: "admin/login/login-view" },
   "POST /auth/login": { action: "admin/login/login" },
-  "GET /auth/logout": {action: "admin/login/logout"},
+  "GET /auth/logout": { action: "admin/login/logout" },
 
   //Admin Routes
 
@@ -90,14 +90,22 @@ module.exports.routes = {
   "GET /admin/category/delete/:id": { action: "admin/category/delete" },
 
   //Admin-Upload-PDF Routes
-  "POST /admin/pdf/upload/:pid/:tid/:iid": {action: "admin/issue/pdf-upload"},
+  "POST /admin/pdf/upload/:pid/:tid/:iid": { action: "admin/issue/pdf-upload" },
 
   //Mobil App API Routes
-  "POST /api/v1/device":  {action: "app/security/register-update-device-info"},
-  "GET /api/v1/magazines/all/page/:page": {action: "app/get-magazines-latest-issues"},
-  "GET /api/v1/magazines/carousel/page/:page": {action: "app/get-carousel-magazines-issues"},
-  "GET /api/v1/magazines/category": {action: "app/get-categories-list"},
-  "GET /api/v1/magazines/category/:catId/page/:page": {action: "app/get-magazine-latest-issue-category"},
-  "POST /api/v1/ezwaiting/session": {action: "app/check-free-session"},
-  "GET /api/v1/magazine/:issueId/download": {action: "app/get-magazine-issue-download"},
+  "POST /api/v1/device": { action: "app/security/register-update-device-info" },
+  "GET /api/v1/magazines/all/page/:page": {
+    action: "app/get-magazines-latest-issues",
+  },
+  "GET /api/v1/magazines/carousel/page/:page": {
+    action: "app/get-carousel-magazines-issues",
+  },
+  "GET /api/v1/magazines/category": { action: "app/get-categories-list" },
+  "GET /api/v1/magazines/category/:catId/page/:page": {
+    action: "app/get-magazine-latest-issue-category",
+  },
+  "POST /api/v1/ezwaiting/session": { action: "app/check-free-session" },
+  "GET /api/v1/magazine/:issueId/download": {
+    action: "app/get-magazine-issue-download",
+  },
 };

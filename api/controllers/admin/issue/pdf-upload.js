@@ -46,10 +46,11 @@ module.exports = {
       req.file('file')
       .upload({
         adapter: require('skipper-azure'),
-        key: '',
+        key: 'ezwaitingroomv2',
         secret: '',
         container: 'magazinefiles',
-        dirname: directoryName
+        dirname: directoryName,
+        maxBytes: 1000000000
       }, async function whenDone(err, uploadedFiles) {
         if (err) return res.negotiate(err);
 
@@ -58,7 +59,7 @@ module.exports = {
           issue: `issue`
         });
 
-        return res.redirect('/admin/issue/update/issue');
+       return res.redirect('/admin/issue/update/issue');
 
       });
 
