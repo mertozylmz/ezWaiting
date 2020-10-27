@@ -29,7 +29,7 @@ module.exports = {
         },
         skip: (req.param("page") - 1) * limit,
         limit: limit,
-      }).populate("issues", {
+      }).populate("issue", {
         sort: "createdAt DESC",
         limit: 1,
         where: {
@@ -42,7 +42,7 @@ module.exports = {
           isActive: true,
           isDeleted: false,
         },
-      }).populate("issues", {
+      }).populate("issue", {
         sort: "createdAt DESC",
         limit: 1,
         where: {

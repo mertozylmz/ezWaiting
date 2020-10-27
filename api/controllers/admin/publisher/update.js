@@ -56,11 +56,12 @@ module.exports = {
       let res = this.res;
       let req = this.req;
 
-      if(inputs.password){
+      if (inputs.password) {
         await User.updateOne({ id: req.param('id') }).set({
           firstName: inputs.firstName,
           lastName: inputs.lastName,
           email: inputs.email,
+          password: inputs.password,
           companyName: inputs.companyName,
           webSite: inputs.webSite,
           address: inputs.address,
@@ -70,12 +71,11 @@ module.exports = {
 
         return res.redirect("/admin/publisher/update/" + req.param('id'));
 
-      }else{
+      } else {
         await User.updateOne({ id: req.param('id') }).set({
           firstName: inputs.firstName,
           lastName: inputs.lastName,
           email: inputs.email,
-          password: inputs.password,
           companyName: inputs.companyName,
           webSite: inputs.webSite,
           address: inputs.address,

@@ -26,19 +26,19 @@ module.exports = {
       id: userId,
     });
 
-    const countries = await Country.find();
-    const categories = await Category.find();
+    const countries = await Country.find({ isDeleted: false });
+    const categories = await Category.find({ isDeleted: false });
 
-    if(loggedInUser.userRole == 'USER_ROLE_PUBLISHER'){
-      publishers = loggedInUser;
-    }else{
-      publishers = await User.find({ userRole: "USER_ROLE_PUBLISHER" });
+    if (loggedInUser.userRole == 'USER_ROLE_PUBLISHER') {
+      publishers = [loggedInUser];
+    } else {
+      publishers = await User.find({ userRole: "USER_ROLE_PUBLISHER", isDeleted: false });
     }
 
     return exits.success({
       layout: 'layouts/layout-admin',
       section: 'title',
-      subSection :'title-create',
+      subSection: 'title-create',
       mainName: 'Title',
       mainSubName: 'Title Create',
       publishers,

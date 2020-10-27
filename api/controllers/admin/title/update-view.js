@@ -25,7 +25,7 @@ module.exports = {
     let publishers;
 
     if(loggedInUser.userRole == 'USER_ROLE_PUBLISHER'){
-      publishers = loggedInUser;
+      publishers = [loggedInUser];
       reqParams = {
         id: req.param('id'),
         publisher: userId

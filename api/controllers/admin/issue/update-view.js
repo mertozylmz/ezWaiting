@@ -15,7 +15,13 @@ module.exports = {
   fn: async function (inputs, exits) {
     let req = this.req;
 
-    let issue = await Issue.findOne({ id: req.param("id") });
+    let userId = req.session.passport.user
+
+    let loggedInUser = await User.findOne({
+      id: userId,
+    });
+
+    let issue = await Issue.findOne({ id: req.param("id") }).populate('title');
 
     const titles = await Title.find({ isDeleted: false });
 
@@ -27,8 +33,8 @@ module.exports = {
       mainSubName: 'Issue Update',
       issue: issue,
       titles,
-      title:title,
-      publisher
+      title: issue.title,
+      publisher: loggedInUser
     });
   },
 };

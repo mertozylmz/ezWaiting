@@ -94,8 +94,8 @@ module.exports.routes = {
 
   //Mobil App API Routes
   "POST /api/v1/device":  {action: "app/security/register-update-device-info"},
-  "GET /api/v1/magazines/all/page/:page": {action: "app/get-magazine-latest-issue-category"},
-  "GET /api/v1/magazines/carousel/:page": {action: "app/get-carousel-magazines-issues"},
+  "GET /api/v1/magazines/all/page/:page": {action: "app/get-magazines-latest-issues"},
+  "GET /api/v1/magazines/carousel/page/:page": {action: "app/get-carousel-magazines-issues"},
   "GET /api/v1/magazines/category": {action: "app/get-categories-list"},
   "GET /api/v1/magazines/category/:catId/page/:page": {action: "app/get-magazine-latest-issue-category"},
   "POST /api/v1/ezwaiting/session": {action: "app/check-free-session"},
