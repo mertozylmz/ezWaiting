@@ -40,7 +40,7 @@ module.exports = Object.assign({}, PRODUCTION_CONFIG, {
 
   models: {
 
-    migrate: 'safe',
+    migrate: 'alter',
 
   },
 
