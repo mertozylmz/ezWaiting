@@ -23,6 +23,10 @@ module.exports = {
 
     let issue = await Issue.findOne({ id: req.param("id") }).populate('title');
 
+    let pdfs = await Pdf.find({
+      issue: issue.id
+    });
+
     const titles = await Title.find({ isDeleted: false });
 
     return exits.success({
@@ -33,6 +37,7 @@ module.exports = {
       mainSubName: 'Issue Update',
       issue: issue,
       titles,
+      pdfs,
       title: issue.title,
       publisher: loggedInUser
     });

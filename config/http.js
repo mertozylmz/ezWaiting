@@ -37,6 +37,15 @@ module.exports.http = {
     return require('passport').session();
   })(),
 
+  bodyParser: (function _configureBodyParser(){
+    var skipper = require('skipper');
+    var middlewareFn = skipper({
+      strict: true,
+      maxTimeToBuffer: 100000,
+    });
+    return middlewareFn;
+  })(),
+
   order: [
     'cookieParser',
     'session',

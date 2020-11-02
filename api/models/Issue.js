@@ -35,13 +35,6 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-    //one-to-one relations
-
-    pdf:{
-      model:'pdf',
-      unique: true
-    },
-
     //one-to-many relations
     title:{
       model: 'title',

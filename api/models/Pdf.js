@@ -22,8 +22,7 @@ module.exports = {
     // one-to-one relations
 
     issue: {
-      collection:'issue',
-      via: 'pdf'
+      model: 'issue'
     },
 
     //one-to-many relations
