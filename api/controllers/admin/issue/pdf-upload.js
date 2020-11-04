@@ -18,7 +18,7 @@ module.exports = {
     },
   },
 
-  fn: async function (inputs) {
+  fn: async function (inputs,exits) {
     try {
       let res = this.res;
       let req = this.req;
