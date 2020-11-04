@@ -15,7 +15,10 @@ module.exports = {
   fn: async function (inputs, exits) {
     let req = this.req;
 
-    let userId = req.session.passport.user
+    let userId = req.session.passport.user;
+
+    var errors = req.session.yup_errors ? req.session.yup_errors : [];
+    req.session.yup_errors = null;
 
     let loggedInUser = await User.findOne({
       id: userId,
@@ -54,6 +57,7 @@ module.exports = {
       countries,
       categories,
       issues,
+      errors: errors
     });
   },
 };

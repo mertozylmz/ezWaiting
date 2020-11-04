@@ -1,3 +1,5 @@
+var { schemaIssue } = require("../../../validations/issue");
+
 module.exports = {
 
 
@@ -40,15 +42,27 @@ module.exports = {
       let res = this.res;
       let req = this.req;
 
-      await Issue.updateOne({ id: req.param('id') }).set({
+
+      let requestParamsIssue = {
         name: inputs.name,
         issueLiveDate: inputs.issueLiveDate,
         description: inputs.description,
         status: inputs.status,
-        title: inputs.title
-      });
+        title: inputs.title,
+        modifiedBy: req.user.id
+      }
 
-      return res.redirect("/admin/issue/update/" + req.param('id'));
+      schemaCategory
+      .validate(requestParamsIssue)
+      .then(async function () {
+        await Issue.updateOne({ id: req.param('id') }).set(requestParamsIssue);
+
+        return res.redirect("/admin/issue/update/" + req.param('id'));
+      })
+      .catch(function (err) {
+        req.session.yup_errors = err.errors;
+        return res.redirect("/admin/issue/update/" + req.param('id'));
+      });
 
     } catch (error) {
       console.log("Create issue error: ", error);

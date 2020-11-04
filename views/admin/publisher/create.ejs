@@ -1,6 +1,16 @@
 <div class="br-section-wrapper">
   <h6 class="br-section-label">CREATE PUBLISHER</h6>
 
+  <% if(errors.length){ %>
+    <div class="alert alert-danger" role="alert">
+      <ul>
+        <% errors.forEach(function(error){ %>
+        <li><%=error%></li>
+        <% }); %>
+      </ul>
+    </div>
+    <% } %>
+
   <form action="/admin/publisher/create" method="POST">
     <div class="form-layout form-layout-1">
       <div class="row mg-b-25">

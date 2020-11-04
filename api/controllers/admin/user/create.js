@@ -1,3 +1,5 @@
+var { schemaUser } = require("../../../validations/user");
+
 module.exports = {
   friendlyName: "Create user",
 
@@ -48,7 +50,7 @@ module.exports = {
       let res = this.res;
       let req = this.req;
 
-      let user = await User.create({
+      let requestParamsUser = {
         firstName: inputs.firstName,
         lastName: inputs.lastName,
         email: inputs.email,
@@ -56,10 +58,20 @@ module.exports = {
         address: inputs.address,
         phone: inputs.phone,
         userRole: "USER_ROLE_SUPER_ADMIN",
-        createdBy: req.user.id
-      }).fetch();
+        createdBy: req.user.id,
+      };
 
-      return res.redirect('/user/update/'+user.id);
+      schemaUser
+        .validate(requestParamsUser)
+        .then(async function () {
+          let user = await User.create(requestParamsUser).fetch();
+
+          return res.redirect("/user/update/" + user.id);
+        })
+        .catch(function (err) {
+          req.session.yup_errors = err.errors;
+          res.redirect("/admin/user/create");
+        });
     } catch (error) {
       console.log("Create user error: ", error);
       return exits.invalidRequest({

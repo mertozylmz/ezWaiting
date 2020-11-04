@@ -18,6 +18,9 @@ module.exports = {
 
     let userId = req.session.passport.user;
 
+    var errors = req.session.yup_errors ? req.session.yup_errors : [];
+    req.session.yup_errors = null;
+
     let user = await User.findOne({
       id: userId,
     });
@@ -41,6 +44,7 @@ module.exports = {
       mainName: "Issue",
       mainSubName: "Issue Create",
       titles,
+      errors: errors
     });
   },
 };

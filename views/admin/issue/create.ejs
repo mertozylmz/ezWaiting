@@ -1,19 +1,29 @@
 <div class="br-section-wrapper">
   <h6 class="br-section-label">CREATE ISSUE</h6>
 
+  <% if(errors.length){ %>
+    <div class="alert alert-danger" role="alert">
+      <ul>
+        <% errors.forEach(function(error){ %>
+        <li><%=error%></li>
+        <% }); %>
+      </ul>
+    </div>
+    <% } %>
+
   <form action="/admin/issue/create" method="POST">
     <div class="form-layout form-layout-1">
       <div class="row mg-b-25">
         <div class="col-lg-6">
           <div class="form-group">
-            <label class="form-control-label">Name: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="name" placeholder="Enter Name">
+            <label class="form-control-label">Name: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="name" placeholder="Enter Name" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-6">
           <div class="form-group">
-            <label class="form-control-label">Live Date: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="issueLiveDate" placeholder="Enter Date">
+            <label class="form-control-label">Live Date: <span class="tx-danger">0</span></label>
+            <input class="form-control form-control-dark issueLiveDate" type="text" name="issueLiveDate" placeholder="dd-mm-yyyy" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-12">
@@ -25,21 +35,11 @@
         <div class="col-lg-6">
           <div class="form-group">
             <label class=" form-control-label">Title: <span class="tx-danger">*</span></label>
-            <select class="form-control form-control-dark select2" name="title" data-placeholder="Choose publisher...">
+            <select class="form-control form-control-dark select2" name="title" data-placeholder="Choose publisher..." required>
               <option value="">Choose...</option>
               <% titles.forEach(function(title) { %>
                 <option value="<%= title.id %>"><%= title.name %></option>
               <% }) %>
-            </select>
-          </div>
-        </div><!-- col-6 -->
-        <div class="col-lg-6">
-          <div class="form-group">
-            <label class="form-control-label">Status: <span class="tx-danger"></span></label>
-            <select class="form-control form-control-dark select2" name="status" data-placeholder="Choose Status...">
-              <option value="">Choose...</option>
-              <option value="true">Active</option>
-              <option value="false">Passive</option>
             </select>
           </div>
         </div><!-- col-6 -->

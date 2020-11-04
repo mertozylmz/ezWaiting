@@ -16,6 +16,9 @@ module.exports = {
 
     let req = this.req;
 
+    var errors = req.session.yup_errors ? req.session.yup_errors : [];
+    req.session.yup_errors = null;
+
     let user = await User.findOne({
       userRole: "USER_ROLE_SUPER_ADMIN",
       id: req.param("id"),
@@ -29,6 +32,7 @@ module.exports = {
       mainName: 'User',
       mainSubName: 'User Update',
       user: user,
+      errors: errors
     });
   },
 };

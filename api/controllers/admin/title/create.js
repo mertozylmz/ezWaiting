@@ -1,62 +1,72 @@
+var { schemaTitle } = require("../../../validations/title");
+
 module.exports = {
+  friendlyName: "Create",
 
-
-  friendlyName: 'Create',
-
-
-  description: 'Create title.',
-
+  description: "Create title.",
 
   inputs: {
     name: {
-      type: 'string'
+      type: "string",
     },
     rating: {
-      type: 'string'
+      type: "string",
     },
     publisher: {
-      type: 'ref'
+      type: "ref",
     },
     countries: {
-      type: 'ref'
+      type: "ref",
     },
     categories: {
-      type: 'ref'
-    }
+      type: "ref",
+    },
   },
-
 
   exits: {
     invalidRequest: {
-      statusCode: 500
-    }
+      statusCode: 500,
+    },
   },
-
 
   fn: async function (inputs, exits) {
     try {
       let res = this.res;
 
-      let title = await Title.create({
+      let requestParamsTitle = {
         name: inputs.name,
         rating: inputs.rating,
-        publisher: inputs.publisher
-      }).fetch();
+        publisher: inputs.publisher,
+      };
 
-      const categories = Array.isArray(inputs.categories) ? inputs.categories : [inputs.categories];
-      const countries = Array.isArray(inputs.countries) ? inputs.countries : [inputs.countries];
+      schemaTitle
+        .validate(requestParamsTitle)
+        .then(async function () {
+          let title = await Title.create(requestParamsTitle).fetch();
 
-      await Title.addToCollection(title.id, 'categories').members(categories);
-      await Title.addToCollection(title.id, 'countries').members(countries);
+          const categories = Array.isArray(inputs.categories)
+            ? inputs.categories
+            : [inputs.categories];
+          const countries = Array.isArray(inputs.countries)
+            ? inputs.countries
+            : [inputs.countries];
 
-      return res.redirect('/admin/title/update/' + title.id);
+          await Title.addToCollection(title.id, "categories").members(
+            categories
+          );
+          await Title.addToCollection(title.id, "countries").members(countries);
+
+          return res.redirect("/admin/title/update/" + title.id);
+        })
+        .catch(function (err) {
+          req.session.yup_errors = err.errors;
+          res.redirect("/admin/title/create");
+        });
     } catch (error) {
       console.log("Create title error: ", error);
       return exits.invalidRequest({
         message: "Oops a problem occured.",
       });
     }
-  }
-
-
+  },
 };

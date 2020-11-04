@@ -16,6 +16,9 @@ module.exports = {
 
     let req = this.req;
 
+    var errors = req.session.yup_errors ? req.session.yup_errors : [];
+    req.session.yup_errors = null;
+
     let publisher = await User.findOne({
       userRole: "USER_ROLE_PUBLISHER",
       id: req.param('id'),
@@ -27,7 +30,8 @@ module.exports = {
       subSection: "publisher-list",
       mainName: 'Publisher',
       mainSubName: 'Publisher Update',
-      publisher: publisher
+      publisher: publisher,
+      errors: errors
     });
   },
 };

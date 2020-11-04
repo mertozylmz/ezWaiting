@@ -1,3 +1,5 @@
+var { schemaLocation } = require("../../../validations/location");
+
 module.exports = {
   friendlyName: "Update location",
 
@@ -56,7 +58,7 @@ module.exports = {
       let res = this.res;
       let req = this.req;
 
-      await Location.updateOne({ id: req.param('id') }).set({
+      let requestParamsLocation = {
         name: inputs.name,
         address: inputs.address,
         latitude: inputs.latitude,
@@ -64,11 +66,23 @@ module.exports = {
         radius: inputs.radius,
         city: inputs.city,
         state: inputs.state,
-        country: inputs.country
-      });
+        country: inputs.country,
+        modifiedBy: req.user.id,
+      };
 
-      return res.redirect("/admin/location/update/" + req.param('id'));
+      schemaLocation
+        .validate(requestParamsLocation)
+        .then(async function () {
+          await Location.updateOne({ id: req.param("id") }).set(
+            requestParamsLocation
+          );
 
+          return res.redirect("/admin/location/update/" + req.param("id"));
+        })
+        .catch(function (err) {
+          req.session.yup_errors = err.errors;
+          return res.redirect("/admin/location/update/" + req.param("id"));
+        });
     } catch (error) {
       console.log("Create location error: ", error);
       return exits.invalidRequest({

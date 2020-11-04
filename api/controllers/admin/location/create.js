@@ -1,3 +1,5 @@
+var { schemaLocation } = require("../../../validations/location");
+
 module.exports = {
   friendlyName: "Create location",
 
@@ -55,7 +57,7 @@ module.exports = {
     try {
       let res = this.res;
 
-      let location = await Location.create({
+      let requestParamsLocation = {
         name: inputs.name,
         address: inputs.address,
         latitude: inputs.latitude,
@@ -64,11 +66,23 @@ module.exports = {
         city: inputs.city,
         state: inputs.state,
         country: inputs.country
-      }).fetch();
+      }
 
-      return res.redirect('/admin/location/update/' + location.id);
+
+      schemaLocation
+      .validate(requestParamsLocation)
+      .then(async function () {
+        let location = await Location.create(requestParamsLocation).fetch();
+
+        return res.redirect('/admin/location/update/' + location.id);
+      })
+      .catch(function (err) {
+        req.session.yup_errors = err.errors;
+        res.redirect("/admin/location/create");
+      });
+
     } catch (error) {
-      console.log("Location publisher error: ", error);
+      console.log("Location location error: ", error);
       return exits.invalidRequest({
         message: "Oops a problem occured.",
       });

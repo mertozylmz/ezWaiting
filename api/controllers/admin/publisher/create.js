@@ -1,3 +1,5 @@
+var { schemaUser } = require("../../../validations/user");
+
 module.exports = {
   friendlyName: "Create publisher",
 
@@ -58,7 +60,7 @@ module.exports = {
       let res = this.res;
       let req = this.req;
 
-      let user = await User.create({
+      let requestParamsPublisher = {
         firstName: inputs.firstName,
         lastName: inputs.lastName,
         email: inputs.email,
@@ -68,10 +70,20 @@ module.exports = {
         address: inputs.address,
         phone: inputs.phone,
         userRole: "USER_ROLE_PUBLISHER",
-        createdBy: req.user.id
-      }).fetch();
+        createdBy: req.user.id,
+      };
 
-      return res.redirect('/admin/publisher/update/' + user.id);
+      schemaUser
+        .validate(requestParamsPublisher)
+        .then(async function () {
+          let user = await User.createrequestParamsPublisherfetch();
+
+          return res.redirect("/admin/publisher/update/" + user.id);
+        })
+        .catch(function (err) {
+          req.session.yup_errors = err.errors;
+          res.redirect("/admin/publisher/create");
+        });
     } catch (error) {
       console.log("Create publisher error: ", error);
       return exits.invalidRequest({

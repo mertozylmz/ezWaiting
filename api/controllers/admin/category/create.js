@@ -1,3 +1,5 @@
+var { schemaCategory } = require("../../../validations/category");
+
 module.exports = {
   friendlyName: "Create category",
 
@@ -21,9 +23,20 @@ module.exports = {
     try {
       let res = this.res;
 
-      let category = await Category.create({ name: inputs.name }).fetch();
+      let requestParamsCategory = {
+        name: inputs.name,
+      };
 
-      return res.redirect('/admin/category/update/' + category.id);
+      schemaCategory
+        .validate(requestParamsCategory)
+        .then(async function () {
+          let category = await Category.create(requestParamsCategory).fetch();
+          return res.redirect("/admin/category/update/" + category.id);
+        })
+        .catch(function (err) {
+          req.session.yup_errors = err.errors;
+          res.redirect("/admin/category/create");
+        });
     } catch (error) {
       console.log("Create category error: ", error);
       return exits.invalidRequest({

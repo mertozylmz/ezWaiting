@@ -1,5 +1,6 @@
-module.exports = {
+var { schemaIssue } = require("../../../validations/issue");
 
+module.exports = {
 
   friendlyName: 'Create',
 
@@ -37,15 +38,26 @@ module.exports = {
     try {
       let res = this.res;
 
-      let issue = await Issue.create({
+      let requestParamsIssue = {
         name: inputs.name,
         issueLiveDate: inputs.issueLiveDate,
         description: inputs.description,
-        status: inputs.status,
+        status: 'pending',
         title: inputs.title
-      }).fetch();
+      }
 
-      return res.redirect('/admin/issue/update/' + issue.id);
+      schemaCategory
+      .validate(requestParamsIssue)
+      .then(async function () {
+        let issue = await Issue.create(requestParamsIssue).fetch();
+
+        return res.redirect('/admin/issue/update/' + issue.id);
+      })
+      .catch(function (err) {
+        req.session.yup_errors = err.errors;
+        res.redirect("/admin/issue/create");
+      });
+
     } catch (error) {
       console.log("Create issue error: ", error);
       return exits.invalidRequest({

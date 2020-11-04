@@ -17,12 +17,16 @@ module.exports = {
   fn: async function (inputs, exits) {
     //Render view as return with layout.
 
+    var errors = req.session.yup_errors ? req.session.yup_errors : [];
+    req.session.yup_errors = null;
+
     return exits.success({
       layout: 'layouts/layout-admin',
       section: 'category',
       subSection :'category-create',
       mainName: 'Category',
-      mainSubName: 'Category Create'
+      mainSubName: 'Category Create',
+      errors: errors
     });
   },
 };

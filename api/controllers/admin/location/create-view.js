@@ -15,6 +15,10 @@ module.exports = {
   },
 
   fn: async function (inputs, exits) {
+
+    var errors = req.session.yup_errors ? req.session.yup_errors : [];
+    req.session.yup_errors = null;
+
     let countries = await Country.find();
 
     return exits.success({
@@ -23,7 +27,8 @@ module.exports = {
       subSection :'location-create',
       mainName: 'Location',
       mainSubName: 'Location Create',
-      countries:countries
+      countries:countries,
+      errors:errors
     });
   },
 };

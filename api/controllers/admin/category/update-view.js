@@ -16,6 +16,9 @@ module.exports = {
 
     let req = this.req;
 
+    var errors = req.session.yup_errors ? req.session.yup_errors : [];
+    req.session.yup_errors = null;
+
     let category = await Category.findOne({
       id: req.param('id')
     });
@@ -26,7 +29,8 @@ module.exports = {
       subSection: "category-list",
       mainName: 'Category',
       mainSubName: 'Category List',
-      category: category
+      category: category,
+      errors: errors
     });
   },
 };

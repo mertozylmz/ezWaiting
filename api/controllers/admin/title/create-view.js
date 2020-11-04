@@ -18,6 +18,9 @@ module.exports = {
     //Render view as return with layout.
     let req = this.req;
 
+    var errors = req.session.yup_errors ? req.session.yup_errors : [];
+    req.session.yup_errors = null;
+
     let publishers = null;
 
     let userId = req.session.passport.user
@@ -43,7 +46,8 @@ module.exports = {
       mainSubName: 'Title Create',
       publishers,
       countries,
-      categories
+      categories,
+      errors:errors
     });
   },
 };

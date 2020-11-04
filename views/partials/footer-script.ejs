@@ -9,6 +9,7 @@
 <script src="/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="/lib/input-mask/jquery.mask.js"></script>
 <script src="/lib/select2/js/select2.full.min.js"></script>
 <script src="/lib/dropzone/dropzone.min.js"></script>
 
@@ -26,6 +27,8 @@
         lengthMenu: "_MENU_ items/page",
       },
     });
+
+    $('.issueLiveDate').mask('00-00-0000');
 
 
     $(document).on("click", ".btn-remove", function (e) {

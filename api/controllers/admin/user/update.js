@@ -1,3 +1,5 @@
+var { schemaUser } = require("../../../validations/user");
+
 module.exports = {
   friendlyName: "Update user",
 
@@ -46,20 +48,32 @@ module.exports = {
       let res = this.res;
       let req = this.req;
 
-      if(inputs.password){
-        await User.updateOne({ id: req.param('id') }).set({
+      let requestParamsUser;
+
+      if (inputs.password) {
+        requestParamsUser = {
           firstName: inputs.firstName,
           lastName: inputs.lastName,
           email: inputs.email,
           address: inputs.address,
           phone: inputs.phone,
           modifiedBy: req.user.id,
-        });
+        };
 
-        return res.redirect("/admin/user/update/" + req.param('id'));
+        schemaUser
+          .validate(requestParamsUser)
+          .then(async function () {
+            await User.updateOne({ id: req.param("id") }).set();
 
-      }else{
-        await User.updateOne({ id: req.param('id') }).set({
+            return res.redirect("/admin/user/update/" + req.param("id"));
+          })
+          .catch(function (err) {
+            req.session.yup_errors = err.errors;
+
+            return res.redirect("/admin/user/update/" + req.param("id"));
+          });
+      } else {
+        requestParamsUser = {
           firstName: inputs.firstName,
           lastName: inputs.lastName,
           email: inputs.email,
@@ -67,11 +81,23 @@ module.exports = {
           address: inputs.address,
           phone: inputs.phone,
           modifiedBy: req.user.id,
-        });
+        };
 
-        return res.redirect("/admin/user/update/" + req.param('id'));
+        schemaUser
+          .validate(requestParamsUser)
+          .then(async function () {
+            await User.updateOne({ id: req.param("id") }).set(
+              requestParamsUser
+            );
+
+            return res.redirect("/admin/user/update/" + req.param("id"));
+          })
+          .catch(function (err) {
+            req.session.yup_errors = err.errors;
+
+            return res.redirect("/admin/user/update/" + req.param("id"));
+          });
       }
-
     } catch (error) {
       console.log("Create user error: ", error);
       return exits.invalidRequest({

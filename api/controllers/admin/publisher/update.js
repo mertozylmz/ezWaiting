@@ -1,3 +1,5 @@
+var { schemaUser } = require("../../../validations/user");
+
 module.exports = {
   friendlyName: "Update publisher",
 
@@ -56,8 +58,10 @@ module.exports = {
       let res = this.res;
       let req = this.req;
 
+      let requestParamsPublisher;
+
       if (inputs.password) {
-        await User.updateOne({ id: req.param('id') }).set({
+        requestParamsPublisher = {
           firstName: inputs.firstName,
           lastName: inputs.lastName,
           email: inputs.email,
@@ -67,12 +71,23 @@ module.exports = {
           address: inputs.address,
           phone: inputs.phone,
           modifiedBy: req.user.id,
-        });
+        };
 
-        return res.redirect("/admin/publisher/update/" + req.param('id'));
+        schemaUser
+          .validate(requestParamsPublisher)
+          .then(async function () {
+            await User.updateOne({ id: req.param("id") }).set(
+              requestParamsPublisher
+            );
 
+            return res.redirect("/admin/publisher/update/" + req.param("id"));
+          })
+          .catch(function (err) {
+            req.session.yup_errors = err.errors;
+            return res.redirect("/admin/publisher/update/" + user.id);
+          });
       } else {
-        await User.updateOne({ id: req.param('id') }).set({
+        requestParamsPublisher = {
           firstName: inputs.firstName,
           lastName: inputs.lastName,
           email: inputs.email,
@@ -81,11 +96,22 @@ module.exports = {
           address: inputs.address,
           phone: inputs.phone,
           modifiedBy: req.user.id,
-        });
+        };
 
-        return res.redirect("/admin/publisher/update/" + req.param('id'));
+        schemaUser
+          .validate(requestParamsPublisher)
+          .then(async function () {
+            await User.updateOne({ id: req.param("id") }).set(
+              requestParamsPublisher
+            );
+
+            return res.redirect("/admin/publisher/update/" + req.param("id"));
+          })
+          .catch(function (err) {
+            req.session.yup_errors = err.errors;
+            return res.redirect("/admin/publisher/update/" + req.param("id"));
+          });
       }
-
     } catch (error) {
       console.log("Create publisher error: ", error);
       return exits.invalidRequest({

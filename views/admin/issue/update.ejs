@@ -1,6 +1,16 @@
 <div class="br-section-wrapper">
   <h6 class="br-section-label">UPDATE ISSUE</h6>
 
+  <% if(errors.length){ %>
+    <div class="alert alert-danger" role="alert">
+      <ul>
+        <% errors.forEach(function(error){ %>
+        <li><%=error%></li>
+        <% }); %>
+      </ul>
+    </div>
+    <% } %>
+
   <div class="card">
     <div class="card-header bg-dark">
       <ul class="nav nav-tabs nav-tabs-for-dark card-header-tabs">
