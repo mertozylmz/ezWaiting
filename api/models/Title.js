@@ -53,7 +53,7 @@ module.exports = {
     },
 
     //one-to-one relations
-    issue: {
+    issues: {
       collection: "issue",
       via: "title",
     },

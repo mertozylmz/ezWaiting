@@ -38,7 +38,6 @@ module.exports = {
     //one-to-many relations
     title:{
       model: 'title',
-      unique: true
     }
   },
 };
