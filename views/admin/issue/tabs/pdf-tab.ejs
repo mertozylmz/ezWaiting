@@ -1,8 +1,14 @@
 <div class="tab-pane" id="tab-second">
-  <form class="dropzone" id="pdfUploadDropzone" enctype="multipart/form-data"
-    action="/admin/pdf/upload/<%= publisher.id %>/<%= title.id %>/<%= issue.id%>">
-    <!-- Dropzone.js -->
-  </form>
+  <% if (!pdfs.length) { %>
+    <form class="dropzone" id="pdfUploadDropzone" enctype="multipart/form-data"
+      action="/admin/pdf/upload/<%= publisher.id %>/<%= title.id %>/<%= issue.id%>">
+      <!-- Dropzone.js -->
+    </form>
+  <% } else { %>
+    <div class="alert alert-info">
+      You can only upload 1 file. To upload new one please remove the current.
+    </div>
+  <% } %>
   <hr />
   <div class="card bd-gray-400">
     <table class="table mg-b-0">

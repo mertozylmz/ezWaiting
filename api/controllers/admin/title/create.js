@@ -31,6 +31,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     try {
+      let req = this.req;
       let res = this.res;
 
       let requestParamsTitle = {
