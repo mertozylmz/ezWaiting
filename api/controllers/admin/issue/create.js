@@ -47,7 +47,7 @@ module.exports = {
         title: inputs.title
       }
 
-      schemaCategory
+      schemaIssue
       .validate(requestParamsIssue)
       .then(async function () {
         let issue = await Issue.create(requestParamsIssue).fetch();
