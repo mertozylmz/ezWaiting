@@ -15,7 +15,7 @@ module.exports = {
   },
 
   fn: async function (inputs, exits) {
-
+    let req = this.req;
     var errors = req.session.yup_errors ? req.session.yup_errors : [];
     req.session.yup_errors = null;
 

@@ -15,6 +15,7 @@ module.exports = {
   },
 
   fn: async function (inputs, exits) {
+    let req = this.req;
     //Render view as return with layout.
 
     var errors = req.session.yup_errors ? req.session.yup_errors : [];
