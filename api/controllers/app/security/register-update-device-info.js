@@ -102,8 +102,10 @@ module.exports = {
         };
 
         device = await Device.updateOne({
-          devideId: inputs.deviceId,
+          deviceId: inputs.deviceId,
         }).set(requestParams);
+
+        console.log(device);
 
         tokenDetails = await sails.helpers.jwtEncryption(device.deviceId);
       }
