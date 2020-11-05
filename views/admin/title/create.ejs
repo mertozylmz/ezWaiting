@@ -16,20 +16,20 @@
       <div class="row mg-b-25">
         <div class="col-lg-4">
           <div class="form-group">
-            <label class="form-control-label">Title: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="name" placeholder="Enter Title">
+            <label class="form-control-label">Title: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="name" placeholder="Enter Title" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group">
-            <label class="form-control-label">Rating: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="rating" placeholder="Enter Rating">
+            <label class="form-control-label">Rating: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="rating" placeholder="Enter Rating" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group">
             <label class=" form-control-label">Publisher: <span class="tx-danger">*</span></label>
-            <select class="form-control form-control-dark select2" name="publisher" data-placeholder="Choose publisher...">
+            <select class="form-control form-control-dark select2" name="publisher" data-placeholder="Choose publisher..." required>
               <option value="">Choose...</option>
               <% publishers.forEach(function(publisher) { %>
                 <option value="<%= publisher.id %>"><%= publisher.firstName %> <%= publisher.lastName %></option>
@@ -40,7 +40,7 @@
         <div class="col-lg-4">
           <div class="form-group">
             <label class=" form-control-label">Countries: <span class="tx-danger">*</span></label>
-            <select class="form-control form-control-dark select2" name="countries" data-placeholder="Choose countries..." multiple>
+            <select class="form-control form-control-dark select2" name="countries" data-placeholder="Choose countries..." multiple required>
               <option value="">Choose...</option>
               <% countries.forEach(function(country) { %>
                 <option value="<%= country.id %>"><%= country.name %></option>
@@ -51,7 +51,7 @@
         <div class="col-lg-4">
           <div class="form-group">
             <label class=" form-control-label">Categories: <span class="tx-danger">*</span></label>
-            <select class="form-control form-control-dark select2" name="categories" data-placeholder="Choose categories..." multiple>
+            <select class="form-control form-control-dark select2" name="categories" data-placeholder="Choose categories..." multiple required>
               <option value="">Choose...</option>
               <% categories.forEach(function(category) { %>
                 <option value="<%= category.id %>"><%= category.name %></option>

@@ -16,49 +16,49 @@
       <div class="row mg-b-25">
         <div class="col-lg-4">
           <div class="form-group">
-            <label class="form-control-label">Name: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="name" placeholder="Enter name">
+            <label class="form-control-label">Name: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="name" placeholder="Enter name" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group">
-            <label class="form-control-label">Address: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="address" placeholder="Enter address">
+            <label class="form-control-label">Address: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="address" placeholder="Enter address" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group">
             <label class="form-control-label">Latitude: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="text" name="latitude" placeholder="Enter latitude">
+            <input class="form-control form-control-dark" type="text" name="latitude" placeholder="Enter latitude" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group">
             <label class="form-control-label">Longitude: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="text" name="longitude" placeholder="Enter longitude">
+            <input class="form-control form-control-dark" type="text" name="longitude" placeholder="Enter longitude" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group mg-b-10-force">
-            <label class="form-control-label">Radius: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="radius" placeholder="Enter radius">
+            <label class="form-control-label">Radius: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="radius" placeholder="Enter radius" required>
           </div>
         </div><!-- col-8 -->
         <div class="col-lg-4">
           <div class="form-group">
-            <label class="form-control-label">City: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="city" placeholder="Enter city">
+            <label class="form-control-label">City: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="city" placeholder="Enter city" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group mg-b-10-force">
-            <label class="form-control-label">State: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="state" placeholder="Enter state">
+            <label class="form-control-label">State: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="state" placeholder="Enter state" required>
           </div>
         </div><!-- col-8 -->
         <div class="form-group">
           <label class=" form-control-label">Country: <span class="tx-danger">*</span></label>
-          <select class="form-control form-control-dark select2" name="country" data-placeholder="Choose country">
+          <select class="form-control form-control-dark select2" name="country" data-placeholder="Choose country" required>
             <option value="">Choose...</option>
             <% countries.forEach(function(country){ %>
               <option value="<%= country.id %>"><%= country.name%></option>

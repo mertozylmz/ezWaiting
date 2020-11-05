@@ -17,49 +17,49 @@
         <div class="col-lg-4">
 
           <div class="form-group">
-            <label class="form-control-label">Name: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="name" placeholder="Enter name" value="<%= location.name %>">
+            <label class="form-control-label">Name: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="name" placeholder="Enter name" value="<%= location.name %>" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group">
-            <label class="form-control-label">Address: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="address" placeholder="Enter address" value="<%= location.address %>">
+            <label class="form-control-label">Address: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="address" placeholder="Enter address" value="<%= location.address %>" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group">
             <label class="form-control-label">Latitude: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="text" name="latitude" placeholder="Enter latitude" value="<%= location.latitude %>">
+            <input class="form-control form-control-dark" type="text" name="latitude" placeholder="Enter latitude" value="<%= location.latitude %>" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group">
             <label class="form-control-label">Longitude: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="text" name="longitude" placeholder="Enter longitude" value="<%= location.longitude %>">
+            <input class="form-control form-control-dark" type="text" name="longitude" placeholder="Enter longitude" value="<%= location.longitude %>" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group mg-b-10-force">
-            <label class="form-control-label">Radius: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="radius" placeholder="Enter radius" value="<%= location.radius %>">
+            <label class="form-control-label">Radius: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="radius" placeholder="Enter radius" value="<%= location.radius %>" required>
           </div>
         </div><!-- col-8 -->
         <div class="col-lg-4">
           <div class="form-group">
-            <label class="form-control-label">City: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="city" placeholder="Enter city" value="<%= location.city %>">
+            <label class="form-control-label">City: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="city" placeholder="Enter city" value="<%= location.city %>" required>
           </div>
         </div><!-- col-4 -->
         <div class="col-lg-4">
           <div class="form-group mg-b-10-force">
-            <label class="form-control-label">State: <span class="tx-danger"></span></label>
-            <input class="form-control form-control-dark" type="text" name="state" placeholder="Enter state" value="<%= location.state %>">
+            <label class="form-control-label">State: <span class="tx-danger">*</span></label>
+            <input class="form-control form-control-dark" type="text" name="state" placeholder="Enter state" value="<%= location.state %>" required>
           </div>
         </div><!-- col-8 -->
         <div class="form-group">
           <label class=" form-control-label">Country: <span class="tx-danger">*</span></label>
-          <select class="form-control form-control-dark select2" name="country" data-placeholder="Choose locations...">
+          <select class="form-control form-control-dark select2" name="country" data-placeholder="Choose locations..." required>
             <option value="">Choose...</option>
             <% countries.forEach(function(country){ %>
               <option value="<%= country.id %>" <% if (country.id == location.country.id) { %>selected<% } %>><%= country.name%></option>
