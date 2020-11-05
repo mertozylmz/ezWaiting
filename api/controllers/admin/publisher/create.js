@@ -76,7 +76,7 @@ module.exports = {
       schemaUser
         .validate(requestParamsPublisher)
         .then(async function () {
-          let user = await User.createrequestParamsPublisherfetch();
+          let user = await User.create(requestParamsPublisher).fetch();
 
           return res.redirect("/admin/publisher/update/" + user.id);
         })

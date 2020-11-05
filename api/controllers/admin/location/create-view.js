@@ -15,11 +15,12 @@ module.exports = {
   },
 
   fn: async function (inputs, exits) {
-
+    let req = this.req;
     var errors = req.session.yup_errors ? req.session.yup_errors : [];
     req.session.yup_errors = null;
 
-    let countries = await Country.find();
+    //TODO: SORT NAME
+    let countries = await Country.find().sort('name ASC');
 
     return exits.success({
       layout: 'layouts/layout-admin',

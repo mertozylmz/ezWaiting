@@ -8,8 +8,8 @@ exports.schemaUser = yup.object().shape({
   userRole: yup.string().required(),
   companyName: yup.string(),
   firstName: yup.string().required(),
-  lastName: yup.boolean().required(),
+  lastName: yup.string().required(),
   webSite: yup.string(),
   address: yup.string(),
-  phone: yup.boolean(),
+  phone: yup.string(),
 });
