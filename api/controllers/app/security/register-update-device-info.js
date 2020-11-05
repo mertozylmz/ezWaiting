@@ -65,22 +65,53 @@ module.exports = {
   fn: async function (inputs, exits) {
     try {
       //Get post values for registering new device.
-      let requestParams = {
-        osVersion: inputs.osVersion,
-        deviceName: inputs.deviceName,
-        platform: inputs.platform,
-        deviceModel: inputs.deviceModel,
-        deviceOSVersion: inputs.deviceOSVersion,
-        appVersion: inputs.appVersion,
-        pushToken: inputs.pushToken,
+
+      let tokenDetails;
+      let device;
+      let requestParams = {};
+
+      let existingDevice = await Device.findOne({
         deviceId: inputs.deviceId,
-      };
+      });
 
-      let device = await Device.create(requestParams).fetch();
+      if (!existingDevice) {
+        requestParams = {
+          osVersion: inputs.osVersion,
+          deviceName: inputs.deviceName,
+          platform: inputs.platform,
+          deviceModel: inputs.deviceModel,
+          deviceOSVersion: inputs.deviceOSVersion,
+          appVersion: inputs.appVersion,
+          pushToken: inputs.pushToken,
+          deviceId: inputs.deviceId,
+        };
 
-      var tokenDetails = await sails.helpers.jwtEncryption(device.deviceId);
+        device = await Device.create(requestParams).fetch();
 
-      return exits.success({ devideId: device.deviceId , accessToken: tokenDetails.token });
+        tokenDetails = await sails.helpers.jwtEncryption(device.deviceId);
+      } else {
+        requestParams = {
+          osVersion: inputs.osVersion,
+          deviceName: inputs.deviceName,
+          platform: inputs.platform,
+          deviceModel: inputs.deviceModel,
+          deviceOSVersion: inputs.deviceOSVersion,
+          appVersion: inputs.appVersion,
+          pushToken: inputs.pushToken,
+          deviceId: inputs.deviceId,
+        };
+
+        device = await Device.updateOne({
+          devideId: inputs.deviceId,
+        }).set(requestParams);
+
+        tokenDetails = await sails.helpers.jwtEncryption(device.deviceId);
+      }
+
+      return exits.success({
+        devideId: device.deviceId,
+        accessToken: tokenDetails.token,
+      });
     } catch (error) {
       sails.log.error("Register device error: ", error);
       return exits.errorRequest();
