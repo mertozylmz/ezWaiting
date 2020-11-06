@@ -42,14 +42,18 @@ module.exports = {
         return title.issues.length > 0;
       });
 
-      let issues = titleHasOneIssue.map((title) => {
+      let issues = await titleHasOneIssue.map(async (title) => {
         let issue = title.issues.pop();
+
+        let pdf = await Pdf.findOne({
+          issue: issue.id
+        });
 
         return {
           id: issue.id,
           name: issue.name,
           issueDescription: issue.description,
-          thumbImg: issue.thumbImg,
+          thumbImg: pdf.thumbImg,
         };
       });
 

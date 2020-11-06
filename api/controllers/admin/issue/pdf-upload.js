@@ -57,6 +57,7 @@ module.exports = {
           await Pdf.create({
             link: `https://ezwaitingroomv2.blob.core.windows.net/magazinefiles/${uploadedFiles[0].fd}`,
             issue: issue,
+            thumbImg: `https://ezwaitingroomv2.blob.core.windows.net/magazinefiles/1.jpg`
           });
         }
       );
