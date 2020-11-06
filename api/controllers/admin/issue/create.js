@@ -21,7 +21,7 @@ module.exports = {
       type: "string"
     },
     status: {
-      type: "boolean"
+      type: "string"
     },
     title: {
       type: 'ref'

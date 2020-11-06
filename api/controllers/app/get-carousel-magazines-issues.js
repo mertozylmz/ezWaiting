@@ -8,7 +8,7 @@ module.exports = {
   exits: {
     success: {
       description: "List elements of categories",
-      statusCode: 204,
+      statusCode: 200,
     },
     invalidUser: {
       statusCode: 401,
@@ -30,7 +30,7 @@ module.exports = {
         },
         skip: (req.param("page") - 1) * limit,
         limit: limit,
-      }).populate("issue", {
+      }).populate("issues", {
         sort: "createdAt DESC",
         limit: 1,
         where: {
@@ -38,25 +38,13 @@ module.exports = {
         },
       });
 
-      let allTitles = await Title.find({
-        where: {
-          isActive: true,
-          isDeleted: false,
-        },
-      }).populate("issue", {
-        sort: "createdAt DESC",
-        limit: 1,
-        where: {
-          status: "published",
-        },
-      });
-
-      let titleHasOneIssue = allTitles.filter((title) => {
+      let titleHasOneIssue = titles.filter((title) => {
         return title.issues.length > 0;
       });
 
-      let issues = titles.map((title) => {
+      let issues = titleHasOneIssue.map((title) => {
         let issue = title.issues.pop();
+
         return {
           id: issue.id,
           name: issue.name,
@@ -64,6 +52,7 @@ module.exports = {
           thumbImg: issue.thumbImg,
         };
       });
+
 
       return exits.success({
         count: titleHasOneIssue.length,
