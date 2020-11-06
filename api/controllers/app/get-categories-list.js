@@ -22,21 +22,25 @@ module.exports = {
         isActive: true,
       }).populate("title");
 
-      let issueCategories = issues.map((issue) => ({
-        category: issue.title.id,
-      }));
+      let generalCategories = [];
 
-      let categoriesUniqueList = _.uniq(issueCategories);
+      let issueCategories = await issues.map(async (issue) => {
+        let titleCategories = await Title.findOne({
+          id: issue.title.id,
+        }).populate("categories");
 
-      let categories = [];
+        for (var i = 0; i < titleCategories.categories.length; i++) {
+          let category = await Category.findOne({
+            id: titleCategories.categories[i].id,
+          });
 
-      for (var i = 0; i < categoriesUniqueList; i++) {
-        let category = await Category.findOne({
-          id: categoriesUniqueList[i].category,
-        });
+          generalCategories.push(category);
+        }
+      });
 
-        categories.push(category);
-      }
+      await Promise.all(issueCategories);
+
+      let categories = _.uniq(generalCategories);
 
       return exits.success({
         categories,
