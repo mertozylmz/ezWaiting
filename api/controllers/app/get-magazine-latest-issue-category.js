@@ -38,7 +38,7 @@ module.exports = {
         return title.issues.length > 0;
       });
 
-      let issues = titles.map((title) => {
+      let issues = titleHasOneIssue.map((title) => {
         let issue = title.issues.pop();
         return {
           id: issue.id,
