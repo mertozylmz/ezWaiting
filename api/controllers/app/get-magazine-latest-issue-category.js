@@ -32,13 +32,9 @@ module.exports = {
         },
         skip: (req.param("page") - 1) * limit,
         limit: limit,
-      }).populate("issues", {
-        sort: "createdAt DESC",
-        limit: 1,
-        where: {
-          status: "published",
-        },
-      });
+      }).populate("issues");
+
+      
 
       let allTitles = await Title.find({
         where: {
