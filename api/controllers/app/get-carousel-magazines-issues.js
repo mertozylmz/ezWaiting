@@ -32,8 +32,6 @@ module.exports = {
         limit: limit,
       }).populate("issues");
 
-      console.log(titles);
-
       let titleHasOneIssue = titles.filter((title) => {
         return title.issues.length > 0;
       });
@@ -44,6 +42,8 @@ module.exports = {
         let pdf = await Pdf.findOne({
           issue: issue.id
         });
+
+        console.log(pdf);
 
         return {
           id: issue.id,
