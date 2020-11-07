@@ -39,7 +39,6 @@ module.exports = {
       let issues = titleHasOneIssue.map((title) => {
         let issue = title.issues.pop();
 
-        console.log(issue);
         return {
           id: issue.id,
           name: issue.name,
@@ -47,6 +46,8 @@ module.exports = {
           thumbImg: issue.thumbImg,
         };
       });
+
+      console.log(issues);
 
       return exits.success({
         count: titleHasOneIssue.length,
