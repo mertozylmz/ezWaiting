@@ -20,14 +20,12 @@ module.exports = {
     try {
       let req = this.req;
 
-      let issue = await Issue.findOne({
-        id: req.param('issueId')
-      }).populate('pdf');
-
-      console.log(issue);
+      let pdf = await Pdf.findOne({
+        issue: req.param('issueId')
+      });
 
       return exits.success({
-        url: issue.pdf.link
+        url: pdf.link
       });
     } catch (error) {
       sails.log.error("Get post error:", error);
