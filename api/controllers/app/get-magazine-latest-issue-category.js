@@ -8,7 +8,7 @@ module.exports = {
   exits: {
     success: {
       description: "List elements of categories",
-      statusCode: 204,
+      statusCode: 200,
     },
     invalidUser: {
       statusCode: 401,
@@ -32,7 +32,7 @@ module.exports = {
         },
         skip: (req.param("page") - 1) * limit,
         limit: limit,
-      }).populate("issue", {
+      }).populate("issues", {
         sort: "createdAt DESC",
         limit: 1,
         where: {
