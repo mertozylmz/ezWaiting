@@ -24,6 +24,8 @@ module.exports = {
         id: req.param('issueId')
       }).populate('pdf');
 
+      console.log(issue);
+
       return exits.success({
         url: issue.pdf.link
       });
