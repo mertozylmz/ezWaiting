@@ -29,7 +29,7 @@ module.exports = {
         },
         skip: (req.param("page") - 1) * limit,
         limit: limit,
-      }).populate("issue", {
+      }).populate("issues", {
         sort: "createdAt DESC",
         limit: 1,
         where: {
