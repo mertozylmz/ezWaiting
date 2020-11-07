@@ -40,8 +40,7 @@ module.exports = {
           return c.id == category.id;
         });
 
-         console.log(hasCategory);
-        return title.issues.length > 0 && hasCategory;
+        return title.issues.length >= 0 && hasCategory;
       });
 
       let issues = titleHasOneIssue.map((title) => {
