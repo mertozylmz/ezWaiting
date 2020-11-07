@@ -8,7 +8,7 @@ module.exports = {
   exits: {
     success: {
       description: "List elements of categories",
-      statusCode: 204
+      statusCode: 200
     },
     invalidUser: {
       statusCode: 401,
@@ -21,7 +21,7 @@ module.exports = {
       let req = this.req;
 
       let issue = await Issue.findOne({
-        id: req.param('id')
+        id: req.param('issueId')
       }).populate('pdf');
 
       return exits.success({
