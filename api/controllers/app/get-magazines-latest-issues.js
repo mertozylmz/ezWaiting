@@ -22,7 +22,7 @@ module.exports = {
 
       let limit = 20;
 
-      let allTitles = await Title.find({
+      let titles = await Title.find({
         where: {
           isActive: true,
           isDeleted: false,
@@ -30,6 +30,8 @@ module.exports = {
         skip: (req.param("page") - 1) * limit,
         limit: limit,
       }).populate("issues");
+
+      console.log(titles);
 
       let titleHasOneIssue = allTitles.filter((title) => {
         return title.issues.length > 0;
