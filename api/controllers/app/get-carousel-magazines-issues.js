@@ -30,13 +30,7 @@ module.exports = {
         },
         skip: (req.param("page") - 1) * limit,
         limit: limit,
-      }).populate("issues", {
-        sort: "createdAt DESC",
-        limit: 1,
-        where: {
-          status: "published",
-        },
-      });
+      }).populate("issues");
 
       let titleHasOneIssue = titles.filter((title) => {
         return title.issues.length > 0;
