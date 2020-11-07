@@ -20,7 +20,7 @@ module.exports = {
     try {
       let req = this.req;
 
-      let category = await Category.findOne({ id: req.param('catId') });
+      let category = await Category.findOne({ id: req.param("catId") });
 
       let limit = 20;
 
@@ -31,14 +31,20 @@ module.exports = {
         },
         skip: (req.param("page") - 1) * limit,
         limit: limit,
-      }).populate("issues").populate('categories');
+      })
+        .populate("issues")
+        .populate("categories");
 
       let titleHasOneIssue = allTitles.filter((title) => {
-        return title.issues.length > 0 && title.categories.includes(category.id);
+        let hasCategory = title.categories.find((c) => {
+          return c.id == category.id;
+        });
+
+         console.log(hasCategory);
+        return title.issues.length > 0 && hasCategory;
       });
 
       let issues = titleHasOneIssue.map((title) => {
-        
         let issue = title.issues.pop();
         return {
           id: issue.id,
