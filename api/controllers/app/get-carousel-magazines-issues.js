@@ -51,13 +51,12 @@ module.exports = {
         };
       });
 
-      console.log(issues);
-
+      let finalIssues = await Promise.all(issues);
 
       return exits.success({
         count: titleHasOneIssue.length,
         page: req.param("page"),
-        issues: issues,
+        issues: finalIssues,
       });
     } catch (error) {
       sails.log.error("Get post error:", error);
