@@ -24,11 +24,17 @@ module.exports = {
         issue: req.param('issueId')
       });
 
-      console.log(pdf);
+      if(pdf){
+        return exits.success({
+          url: pdf.link
+        });
+      }else {
+        return exits.success({
+          url: "No issue or pdf found"
+        });
+      }
 
-      return exits.success({
-        url: pdf.link
-      });
+
     } catch (error) {
       sails.log.error("Get post error:", error);
       return exits.invalidUser({ message: "Application key is invalid." });
