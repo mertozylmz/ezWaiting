@@ -8,7 +8,7 @@ module.exports = {
   exits: {
     success: {
       description: "List elements of categories",
-      statusCode: 204,
+      statusCode: 200,
     },
     invalidUser: {
       statusCode: 401,
