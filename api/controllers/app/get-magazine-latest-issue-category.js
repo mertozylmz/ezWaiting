@@ -33,17 +33,12 @@ module.exports = {
         limit: limit,
       }).populate("issues").populate('categories');
 
-      let titleHasSameCategory = allTitles.filter((title) => {
-        return title.categories == category;
-      });
-
-      console.log(titleHasSameCategory);
-
       let titleHasOneIssue = allTitles.filter((title) => {
-        return title.issues.length > 0;
+        return title.issues.length > 0 && title.categories.includes(category);
       });
 
       let issues = titleHasOneIssue.map((title) => {
+        
         let issue = title.issues.pop();
         return {
           id: issue.id,
