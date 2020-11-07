@@ -79,7 +79,7 @@ module.exports = {
           currentTimeInSec: freeSession.currentTimeInSec,
         });
       } else {
-        return exits.invalidRequest({ mesage: "No location found near." });
+        return exits.invalidRequest({ message: "No location found near." });
       }
     } catch (error) {
       sails.log.error("Get post error:", error);
