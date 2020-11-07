@@ -32,6 +32,8 @@ module.exports = {
         limit: limit,
       }).populate("issues");
 
+      console.log(titles);
+
       let titleHasOneIssue = titles.filter((title) => {
         return title.issues.length > 0;
       });
