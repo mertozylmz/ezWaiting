@@ -16,6 +16,7 @@ module.exports = {
     },
     thumbImg: {
       type: 'string',
+      defaultsTo: "null",
       description: "Image link of category"
     },
 
