@@ -24,30 +24,15 @@ module.exports = {
 
       let limit = 20;
 
-      let titles = await Title.find({
-        where: {
-          isActive: true,
-          isDeleted: false,
-          category: category
-        },
-        skip: (req.param("page") - 1) * limit,
-        limit: limit,
-      }).populate("issues");
-
-      
-
       let allTitles = await Title.find({
         where: {
           isActive: true,
           isDeleted: false,
+          category:category
         },
-      }).populate("issue", {
-        sort: "createdAt DESC",
-        limit: 1,
-        where: {
-          status: "published",
-        },
-      });
+        skip: (req.param("page") - 1) * limit,
+        limit: limit,
+      }).populate("issues");
 
       let titleHasOneIssue = allTitles.filter((title) => {
         return title.issues.length > 0;
