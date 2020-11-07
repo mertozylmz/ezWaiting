@@ -43,7 +43,7 @@ module.exports = {
           id: issue.id,
           name: issue.name,
           issueDescription: issue.description,
-          thumbImg: issue.thumbImg ? issue.thumbImg ? "No picture found",
+          thumbImg: issue.thumbImg ? issue.thumbImg : "No picture found",
         };
       });
 
