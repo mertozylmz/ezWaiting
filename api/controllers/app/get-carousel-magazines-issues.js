@@ -43,8 +43,6 @@ module.exports = {
           issue: issue.id
         });
 
-        console.log(pdf);
-
         return {
           id: issue.id,
           name: issue.name,
@@ -52,6 +50,8 @@ module.exports = {
           thumbImg: pdf.thumbImg,
         };
       });
+
+      console.log(issues);
 
 
       return exits.success({
