@@ -34,7 +34,7 @@ module.exports = {
       }).populate("issues").populate('categories');
 
       let titleHasOneIssue = allTitles.filter((title) => {
-        return title.issues.length > 0 && title.categories.includes(category);
+        return title.issues.length > 0 && title.categories.includes(category.id);
       });
 
       let issues = titleHasOneIssue.map((title) => {
