@@ -33,6 +33,8 @@ module.exports = {
         limit: limit,
       }).populate("issues").populate('categories');
 
+      console.log(allTitles);
+
       let titleHasOneIssue = allTitles.filter((title) => {
         if(category == title.categories.id && title.issues.length > 0){
           return title.issues
