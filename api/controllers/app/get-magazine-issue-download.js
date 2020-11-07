@@ -24,6 +24,8 @@ module.exports = {
         issue: req.param('issueId')
       });
 
+      console.log(pdf);
+
       return exits.success({
         url: pdf.link
       });
