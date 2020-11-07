@@ -1,0 +1,32 @@
+<div class="tab-pane active" id="tab-first">
+  <form action="/admin/category/update/<%= category.id%>" method="POST">
+    <div class="form-layout form-layout-1">
+      <div class="row mg-b-25">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="form-control-label"
+              >Name: <span class="tx-danger">*</span></label
+            >
+            <input
+              class="form-control form-control-dark"
+              type="text"
+              name="name"
+              placeholder="Enter firstname"
+              value="<%= category.name%>"
+              required
+            />
+          </div>
+        </div>
+        <!-- col-4 -->
+      </div>
+      <!-- row -->
+
+      <div class="form-layout-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/admin/category/list" class="btn btn-secondary">Cancel</a>
+      </div>
+      <!-- form-layout-footer -->
+    </div>
+    <!-- form-layout -->
+  </form>
+</div>

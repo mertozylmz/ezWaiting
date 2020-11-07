@@ -14,6 +14,10 @@ module.exports = {
       type: "string",
       description: "Name value of category.",
     },
+    thumbImg: {
+      type: 'string',
+      description: "Image link of category"
+    },
 
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗

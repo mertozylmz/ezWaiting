@@ -22,7 +22,7 @@ module.exports = {
 
       let limit = 20;
 
-      let titles = await Title.find({
+      let allTitles = await Title.find({
         where: {
           isActive: true,
           isDeleted: false,
@@ -37,24 +37,11 @@ module.exports = {
         },
       });
 
-      let allTitles = await Title.find({
-        where: {
-          isActive: true,
-          isDeleted: false,
-        },
-      }).populate("issue", {
-        sort: "createdAt DESC",
-        limit: 1,
-        where: {
-          status: "published",
-        },
-      });
-
       let titleHasOneIssue = allTitles.filter((title) => {
         return title.issues.length > 0;
       });
 
-      let issues = titles.map((title) => {
+      let issues = titleHasOneIssue.map((title) => {
         let issue = title.issues.pop();
         return {
           id: issue.id,

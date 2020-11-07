@@ -1,5 +1,5 @@
 <div class="br-section-wrapper">
-  <h6 class="br-section-label">UPDATE CATEGORY</h6>
+  <h6 class="br-section-label">UPDATE ISSUE</h6>
 
   <% if(errors.length){ %>
     <div class="alert alert-danger" role="alert">
@@ -11,21 +11,24 @@
     </div>
     <% } %>
 
-  <form action="/admin/category/update/<%= category.id%>" method="POST">
-    <div class="form-layout form-layout-1">
-      <div class="row mg-b-25">
-        <div class="col-lg-4">
-          <div class="form-group">
-            <label class="form-control-label">Name: <span class="tx-danger">*</span></label>
-            <input class="form-control form-control-dark" type="text" name="name" placeholder="Enter firstname" value="<%= category.name%>" required>
-          </div>
-        </div><!-- col-4 -->
-      </div><!-- row -->
-
-      <div class="form-layout-footer">
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <a href="/admin/category/list" class="btn btn-secondary">Cancel</a>
-      </div><!-- form-layout-footer -->
-    </div><!-- form-layout -->
-  </form>
+  <div class="card">
+    <div class="card-header bg-dark">
+      <ul class="nav nav-tabs nav-tabs-for-dark card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link bd-0 active pd-y-8" href="#tab-first" data-toggle="tab">Issue</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link bd-0 pd-y-8" href="#tab-second" data-toggle="tab">PDF</a>
+        </li>
+      </ul>
+    </div><!-- card-header -->
+    <div class="card-body color-gray-lighter">
+      <div class="tab-content">
+        <!--Tabs-customer-Form-Ejs-->
+        <%- partial('./tabs/update-tab.ejs') %>
+        <!--Tabs-customer-Form-Ejs-->
+        <%- partial('./tabs/pdf-tab.ejs') %>
+      </div><!-- tab-content -->
+    </div><!-- card-body -->
+  </div><!-- card -->
 </div>
