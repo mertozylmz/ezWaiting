@@ -31,11 +31,11 @@ module.exports = {
         limit: limit,
       }).populate("issues");
 
-      console.log(titles);
-
-      let titleHasOneIssue = allTitles.filter((title) => {
+      let titleHasOneIssue = titles.filter((title) => {
         return title.issues.length > 0;
       });
+
+      console.log(titleHasOneIssue);
 
       let issues = titleHasOneIssue.map((title) => {
         let issue = title.issues.pop();
