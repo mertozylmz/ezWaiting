@@ -32,13 +32,14 @@ module.exports = {
       }).populate("issues");
 
       let titleHasOneIssue = titles.filter((title) => {
-        console.log(title.issues.length);
         return title.issues.length > 0;
 
       });
 
       let issues = titleHasOneIssue.map((title) => {
         let issue = title.issues.pop();
+
+        console.log(issue);
         return {
           id: issue.id,
           name: issue.name,
