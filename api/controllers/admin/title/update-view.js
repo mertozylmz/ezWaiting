@@ -42,8 +42,8 @@ module.exports = {
 
     const title = await Title.findOne(reqParams).populate('categories').populate('countries');
 
-    const countries = await Country.find();
-    const categories = await Category.find();
+    const countries = await Country.find({ isDeleted: false }).sort('name ASC');;
+    const categories = await Category.find({ isDeleted: false }).sort('name ASC');;
     const issues = await Issue.find();
 
     return exits.success({

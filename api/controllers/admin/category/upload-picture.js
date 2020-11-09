@@ -23,7 +23,7 @@ module.exports = {
       let res = this.res;
       let req = this.req;
 
-      let category = req.param("pid");
+      let category = req.param("id");
 
       let folderName = `categories/${category}`;
 

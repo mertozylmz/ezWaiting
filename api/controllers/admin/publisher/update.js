@@ -71,6 +71,7 @@ module.exports = {
           address: inputs.address,
           phone: inputs.phone,
           modifiedBy: req.user.id,
+          userRole: "USER_ROLE_PUBLISHER",
         };
 
         schemaUser
@@ -96,6 +97,7 @@ module.exports = {
           address: inputs.address,
           phone: inputs.phone,
           modifiedBy: req.user.id,
+          userRole: "USER_ROLE_PUBLISHER",
         };
 
         schemaUser

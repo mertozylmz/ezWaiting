@@ -22,7 +22,7 @@ module.exports = {
       type: "string"
     },
     status: {
-      type: "boolean"
+      type: "string"
     },
     title: {
       type: "ref"
@@ -52,7 +52,7 @@ module.exports = {
         modifiedBy: req.user.id
       }
 
-      schemaCategory
+      schemaIssue
       .validate(requestParamsIssue)
       .then(async function () {
         await Issue.updateOne({ id: req.param('id') }).set(requestParamsIssue);

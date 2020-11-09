@@ -88,7 +88,7 @@ module.exports.routes = {
   "GET /admin/category/update/:id": { action: "admin/category/update-view" },
   "POST /admin/category/update/:id": { action: "admin/category/update" },
   "GET /admin/category/delete/:id": { action: "admin/category/delete" },
-  "POST /admin/category/upload/:id": { action: "admin/category/image-upload" },
+  "POST /admin/category/upload/:id": { action: "admin/category/upload-picture" },
 
   //Admin-Upload-PDF Routes
   "POST /admin/pdf/upload/:pid/:tid/:iid": { action: "admin/issue/pdf-upload" },

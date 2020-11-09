@@ -4,7 +4,7 @@ var yup = require("yup");
 
 exports.schemaUser = yup.object().shape({
   email: yup.string().required(),
-  password: yup.string().required(),
+  password: yup.string(),
   userRole: yup.string().required(),
   companyName: yup.string(),
   firstName: yup.string().required(),

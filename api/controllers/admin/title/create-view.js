@@ -29,8 +29,8 @@ module.exports = {
       id: userId,
     });
 
-    const countries = await Country.find({ isDeleted: false });
-    const categories = await Category.find({ isDeleted: false });
+    const countries = await Country.find({ isDeleted: false }).sort('name ASC');
+    const categories = await Category.find({ isDeleted: false }).sort('name ASC');
 
     if (loggedInUser.userRole == 'USER_ROLE_PUBLISHER') {
       publishers = [loggedInUser];

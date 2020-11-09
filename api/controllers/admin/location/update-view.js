@@ -22,7 +22,7 @@ module.exports = {
       "country"
     );
 
-    let countries = await Country.find();
+    let countries = await Country.find({ isDeleted: false }).sort('name ASC');
 
     return exits.success({
       layout: "layouts/layout-admin",

@@ -20,7 +20,7 @@ module.exports = {
     req.session.yup_errors = null;
 
     //TODO: SORT NAME
-    let countries = await Country.find().sort('name ASC');
+    let countries = await Country.find({ isDeleted: false }).sort('name ASC');
 
     return exits.success({
       layout: 'layouts/layout-admin',
