@@ -49,7 +49,7 @@ module.exports = {
         description: inputs.description,
         status: inputs.status,
         title: inputs.title,
-        modifiedBy: req.user.id
+        modifiedBy: req.user.id,
       }
 
       schemaIssue

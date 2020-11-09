@@ -3,7 +3,7 @@ var yup = require("yup");
 // Schemas
 
 exports.schemaUser = yup.object().shape({
-  email: yup.string().required(),
+  email: yup.string().email().required(),
   password: yup.string(),
   userRole: yup.string().required(),
   companyName: yup.string(),
