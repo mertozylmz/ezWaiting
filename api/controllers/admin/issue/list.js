@@ -35,6 +35,8 @@ module.exports = {
         isDeleted: false,
         isActive: true,
       });
+
+      console.log(issues);
     }
 
     return exits.success({
