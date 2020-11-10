@@ -1,5 +1,5 @@
 const sortByDistance = require("sort-by-distance");
-const FreeSession = require("../../models/FreeSession");
+
 module.exports = {
   friendlyName: "Get categories",
 
