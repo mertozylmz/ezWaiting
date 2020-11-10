@@ -22,13 +22,19 @@ module.exports = {
     let issues = [];
 
     if (loggedInUser.userRole == "USER_ROLE_PUBLISHER") {
-      let titles = await Title.find({ publisher: userId, isDeleted: false }).populate("issues");
+      let titles = await Title.find({
+        publisher: userId,
+        isDeleted: false,
+      }).populate("issues");
 
       for (var i = 0; i < titles.length; i++) {
         if (titles[i].issues) issues.push(...titles[i].issues);
       }
     } else {
-      issues = await Issue.find();
+      issues = await Issue.find({
+        isDeleted: false,
+        isActive: true,
+      });
     }
 
     return exits.success({
