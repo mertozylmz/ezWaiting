@@ -36,7 +36,6 @@ module.exports = {
         isActive: true,
       });
 
-      console.log(issues);
     }
 
     return exits.success({
