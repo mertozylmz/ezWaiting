@@ -31,30 +31,7 @@
     $('.issueLiveDate').mask('00-00-0000');
 
 
-    $(document).on("click", ".btn-remove", function (e) {
-      var $self = $(this);
-      Swal.fire({
-        title: "Are you sure?",
-        text: "This process will delete your data.",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Accept",
-        cancelButtonText: "Cancel",
-      }).then((result) => {
-        if (result.value) {
-          $.get($self.attr("href"), (response) => {
-            if (response.status) {
-              window.location.reload();
-            } else {
-              Swal.fire("Oops!", "An error occured.", "error");
-            }
-          });
-        }
-      });
-      e.preventDefault();
-    });
+
   });
 
   Dropzone.options.pdfUploadDropzone = {
