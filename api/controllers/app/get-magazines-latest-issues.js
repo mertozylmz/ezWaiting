@@ -51,7 +51,7 @@ module.exports = {
 
       return exits.success({
         count: titleHasOneIssue.length,
-        page: req.param("page"),
+        page: Number(req.param("page")),
         issues: issues,
       });
     } catch (error) {
