@@ -1,8 +1,6 @@
 module.exports = async function (req, res, next) {
   'user strict';
 
-  console.log(req.session.passport.user);
-
   var user = await User.findOne({
     id: req.session.passport.user
   });

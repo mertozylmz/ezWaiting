@@ -47,8 +47,6 @@ module.exports = {
         };
       });
 
-      console.log(issues);
-
       return exits.success({
         count: titleHasOneIssue.length,
         page: Number(req.param("page")),
