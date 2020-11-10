@@ -21,6 +21,9 @@ module.exports = {
     categories: {
       type: "ref",
     },
+    isCarousel: {
+      type: 'boolean'
+    }
   },
 
   exits: {
@@ -40,6 +43,7 @@ module.exports = {
         publisher: inputs.publisher,
         countries: inputs.countries,
         categories: inputs.categories,
+        isCarousel: inputs.isCarousel
       };
 
       schemaTitle

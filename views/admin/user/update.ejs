@@ -1,6 +1,14 @@
 <div class="br-section-wrapper">
   <h6 class="br-section-label">UPDATE user</h6>
 
+  <% if(req.query.success == 'true'){ %>
+    <div class="alert alert-success" role="alert">
+      <ul>
+        <li>User has been created successfully!</li>
+      </ul>
+    </div>
+    <% } %>
+
   <form action="/admin/user/update/<%= user.id%>" method="POST">
     <div class="form-layout form-layout-1">
       <div class="row mg-b-25">

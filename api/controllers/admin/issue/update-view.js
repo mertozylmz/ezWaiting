@@ -27,7 +27,9 @@ module.exports = {
     let issue = await Issue.findOne({ id: req.param("id") }).populate('title');
 
     let pdfs = await Pdf.find({
-      issue: issue.id
+      issue: issue.id,
+      isDeleted: false,
+      isActive: true
     });
 
     const titles = await Title.find({ isDeleted: false });

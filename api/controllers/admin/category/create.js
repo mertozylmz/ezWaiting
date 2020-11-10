@@ -32,7 +32,7 @@ module.exports = {
         .validate(requestParamsCategory)
         .then(async function () {
           let category = await Category.create(requestParamsCategory).fetch();
-          return res.redirect("/admin/category/update/" + category.id);
+          return res.redirect("/admin/category/update/" + category.id +"?success=true");
         })
         .catch(function (err) {
           req.session.yup_errors = err.errors;

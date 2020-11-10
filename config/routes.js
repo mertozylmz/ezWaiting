@@ -89,9 +89,11 @@ module.exports.routes = {
   "POST /admin/category/update/:id": { action: "admin/category/update" },
   "GET /admin/category/delete/:id": { action: "admin/category/delete" },
   "POST /admin/category/upload/:id": { action: "admin/category/upload-picture" },
+  "GET /admin/category/delete/picture/:id": {action: "admin/category/delete-picture"},
 
   //Admin-Upload-PDF Routes
   "POST /admin/pdf/upload/:pid/:tid/:iid": { action: "admin/issue/pdf-upload" },
+  "GET /admin/pdf/delete/:id": { action: "admin/issue/delete-pdf" },
 
   //Mobil App API Routes
   "POST /api/v1/device": { action: "app/security/register-update-device-info" },

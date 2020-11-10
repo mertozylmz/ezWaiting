@@ -52,7 +52,7 @@ module.exports = {
       .then(async function () {
         let issue = await Issue.create(requestParamsIssue).fetch();
 
-        return res.redirect('/admin/issue/update/' + issue.id);
+        return res.redirect('/admin/issue/update/' + issue.id + "?success=true");
       })
       .catch(function (err) {
         req.session.yup_errors = err.errors;

@@ -66,7 +66,7 @@ module.exports = {
         .then(async function () {
           let user = await User.create(requestParamsUser).fetch();
 
-          return res.redirect("/user/update/" + user.id);
+          return res.redirect("/user/update/" + user.id +"?success=true");
         })
         .catch(function (err) {
           req.session.yup_errors = err.errors;

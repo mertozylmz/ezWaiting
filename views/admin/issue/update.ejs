@@ -11,6 +11,14 @@
     </div>
     <% } %>
 
+    <% if(req.query.success == 'true'){ %>
+      <div class="alert alert-success" role="alert">
+        <ul>
+          <li>Issue has been created successfully!</li>
+        </ul>
+      </div>
+      <% } %>
+
   <div class="card">
     <div class="card-header bg-dark">
       <ul class="nav nav-tabs nav-tabs-for-dark card-header-tabs">

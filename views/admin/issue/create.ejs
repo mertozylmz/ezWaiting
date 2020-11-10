@@ -32,10 +32,12 @@
             <textarea class="form-control form-control-dark summernote" name="description" placeholder="Enter Description"></textarea>
           </div>
         </div><!-- col-4 -->
+
+ 
         <div class="col-lg-6">
           <div class="form-group">
             <label class=" form-control-label">Title: <span class="tx-danger">*</span></label>
-            <select class="form-control form-control-dark select2" name="title" data-placeholder="Choose publisher..." required>
+            <select class="form-control form-control-dark select2" name="title" data-placeholder="Choose publisher..." multiple required>
               <option value="">Choose...</option>
               <% titles.forEach(function(title) { %>
                 <option value="<%= title.id %>"><%= title.name %></option>

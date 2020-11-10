@@ -75,7 +75,7 @@ module.exports = {
       .then(async function () {
         let location = await Location.create(requestParamsLocation).fetch();
 
-        return res.redirect('/admin/location/update/' + location.id);
+        return res.redirect('/admin/location/update/' + location.id + "?success=true");
       })
       .catch(function (err) {
         req.session.yup_errors = err.errors;

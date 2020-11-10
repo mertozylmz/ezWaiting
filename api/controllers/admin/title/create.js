@@ -21,6 +21,9 @@ module.exports = {
     categories: {
       type: "ref",
     },
+    isCarousel: {
+      type: 'boolean'
+    }
   },
 
   exits: {
@@ -38,6 +41,7 @@ module.exports = {
         name: inputs.name,
         rating: inputs.rating,
         publisher: inputs.publisher,
+        isCarousel: inputs.isCarousel,
       };
 
       schemaTitle
@@ -57,7 +61,7 @@ module.exports = {
           );
           await Title.addToCollection(title.id, "countries").members(countries);
 
-          return res.redirect("/admin/title/update/" + title.id);
+          return res.redirect("/admin/title/update/" + title.id + "?success=true");
         })
         .catch(function (err) {
           req.session.yup_errors = err.errors;

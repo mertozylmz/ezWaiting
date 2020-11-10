@@ -1,5 +1,5 @@
 <div class="tab-pane" id="tab-second">
-    <% if (category.thumbImg != "null") { %>
+    <% if (category.thumbImg != "") { %>
       <div class="alert alert-info">
         You can only upload 1 file. To upload new one please remove the current.
       </div>
@@ -20,20 +20,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>IMAGE</td>
-            <td class="dropdown">
-              <a href="#" data-toggle="dropdown" class="btn pd-y-3 tx-gray-500 hover-info">
-                <i class="icon ion-more"></i>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right pd-10">
-                <nav class="nav nav-style-1 flex-column">
-                  <a href="<%= category.thumbImg%> " class="nav-link" download>Download</a>
-                </nav>
-              </div>
-              <!-- dropdown-menu -->
-            </td>
-          </tr>
+          <% if (category.thumbImg != "") { %>
+            <tr>
+              <td>IMAGE</td>
+              <td class="dropdown">
+                <a href="#" data-toggle="dropdown" class="btn pd-y-3 tx-gray-500 hover-info">
+                  <i class="icon ion-more"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right pd-10">
+                  <nav class="nav nav-style-1 flex-column">
+                    <a href="<%= category.thumbImg%>" class="nav-link" download>Download</a>
+                    <a href="/admin/category/delete/picture/<%= category.id%>" class="nav-link btn-remove" download>Delete</a>
+                  </nav>
+                </div>
+                <!-- dropdown-menu -->
+              </td>
+            </tr>
+          <% } %>
         </tbody>
       </table>
     </div>

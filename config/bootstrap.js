@@ -11,7 +11,7 @@
 
 module.exports.bootstrap = async function() {
 
-  if (sails.config.models.migrate == 'alter' && sails.config.environment == 'development') {
+  if (sails.config.models.migrate == 'safe' && sails.config.environment == 'development') {
     for (let identity in sails.models) {
       await sails.models[identity].destroy({});
     }//∞
