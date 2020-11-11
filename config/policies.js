@@ -19,7 +19,7 @@ module.exports.policies = {
   // '*': true,
   "admin/login/login-view": true,
   "admin/login/login": true,
-  "admin/login/logout": ['isAllGranted'],
+  "admin/login/logout": true,
 
   //Publisher Routes
   "admin/category/*": ["isAuthenticated", "isRoleAdmin", "isAllGranted"],
