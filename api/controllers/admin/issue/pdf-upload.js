@@ -48,7 +48,7 @@ module.exports = {
         {
           adapter: require("skipper-azure"),
           key: "ezwaitingroomv2",
-          secret: "",
+          secret: "M9pwOy08NL0dMdlHUiqy569n2ffp0JAuSVIVpMbC577dEFGESZaQbuWr45TpyhTPkK+dxVr0fofhqXR9HKjxZA==",
           container: "magazinefiles",
           dirname: directoryName,
           maxBytes: 10000000000,

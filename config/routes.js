@@ -56,6 +56,7 @@ module.exports.routes = {
   "GET /admin/issue/update/:id": { action: "admin/issue/update-view" },
   "POST /admin/issue/update/:id": { action: "admin/issue/update" },
   "GET /admin/issue/delete/:id": { action: "admin/issue/delete" },
+  "GET /admin/issue/download/:id": {action: "admin/issue/download"},
 
   //Admin-Location Routes
   "GET /admin/location/create": { action: "admin/location/create-view" },
@@ -90,11 +91,11 @@ module.exports.routes = {
   "GET /admin/category/delete/:id": { action: "admin/category/delete" },
   "POST /admin/category/upload/:id": { action: "admin/category/upload-picture" },
   "GET /admin/category/delete/picture/:id": {action: "admin/category/delete-picture"},
+  
 
   //Admin-Upload-PDF Routes
   "POST /admin/pdf/upload/:pid/:tid/:iid": { action: "admin/issue/pdf-upload" },
   "GET /admin/pdf/delete/:id": { action: "admin/issue/delete-pdf" },
-  "GET /admin/pdf/download/:id": {action: "admin/issue/download-link"},
 
   //Mobil App API Routes
   "POST /api/v1/device": { action: "app/security/register-update-device-info" },
