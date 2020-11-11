@@ -12,12 +12,12 @@ module.exports = {
     },
   },
 
-  fn: async function (inputs) {
+  fn: async function (inputs, exits) {
     try {
       let req = this.req;
       let res = this.res;
 
-      const downloadLink = req.param("link");
+      const downloadLink = req.param('id');
   
       onsole.log('FUCK');
 
