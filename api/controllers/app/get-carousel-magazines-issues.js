@@ -49,7 +49,7 @@ module.exports = {
           id: issue.id,
           name: issue.name,
           issueDescription: issue.description,
-          thumbImg: pdf.thumbImg,
+          thumbImg: (pdf.thumbImg) ? pdf.thumbImg:null ,
         };
       });
 
