@@ -20,6 +20,9 @@ module.exports = {
       const reqDownloadLink = req.param("link");
 
       const downloadLink = reqDownloadLink.split("//");
+
+      console.log(downloadLink);
+
       const pdf = (
         await axios.get(downloadLink[1], { responseType: "arraybuffer" })
       ).data;
