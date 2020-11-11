@@ -1,11 +1,10 @@
-let axios = require('axios');
+let axios = require("axios");
 module.exports = {
   friendlyName: "Download link",
 
   description: "Download link file (returning a stream).",
 
-  inputs: {
-  },
+  inputs: {},
 
   exits: {
     success: {
@@ -14,18 +13,23 @@ module.exports = {
   },
 
   fn: async function (inputs) {
-    let req = this.req;
-    let res = this.res;
+    try {
+      let req = this.req;
+      let res = this.res;
 
-    const reqDownloadLink = req.param("link");
+      const reqDownloadLink = req.param("link");
 
-    const downloadLink =reqDownloadLink.split("//");
-    const pdf = (await axios.get(downloadLink[1], { responseType: "arraybuffer" }))
-      .data;
-    if (!downloadLink || !pdf) {
-      throw "not found";
+      const downloadLink = reqDownloadLink.split("//");
+      const pdf = (
+        await axios.get(downloadLink[1], { responseType: "arraybuffer" })
+      ).data;
+      if (!downloadLink || !pdf) {
+        throw "not found";
+      }
+      res.attachment("magazine.pdf").send(pdf);
+      return exits.success();
+    } catch (error) {
+      console.log(error);
     }
-    res.attachment("magazine.pdf").send(pdf);
-    return exits.success();
   },
 };
