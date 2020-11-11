@@ -40,7 +40,9 @@ module.exports = {
         let issue = title.issues.pop();
 
         let pdf = await Pdf.findOne({
-          issue: issue.id
+          issue: issue.id,
+          isDeleted: false,
+          isActive: true
         });
 
         return {
