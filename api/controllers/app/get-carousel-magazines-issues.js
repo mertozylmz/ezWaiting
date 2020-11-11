@@ -37,19 +37,25 @@ module.exports = {
       });
 
       let issues = await titleHasOneIssue.map(async (title) => {
-        let issue = title.issues.pop();
+        let publishedIssues = title.issues.filter((i) => i.status == "published");
+
+        let sortedPublishedIssues = publishedIssues.sort(function (a, b) {
+          return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+        });
+
+        let issue = sortedPublishedIssues.pop();
 
         let pdf = await Pdf.findOne({
           issue: issue.id,
           isDeleted: false,
-          isActive: true
+          isActive: true,
         });
 
         return {
           id: issue.id,
           name: issue.name,
           issueDescription: issue.description,
-          thumbImg: (pdf) ? pdf.thumbImg : null ,
+          thumbImg: pdf ? pdf.thumbImg : null,
         };
       });
 

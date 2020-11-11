@@ -20,6 +20,7 @@ module.exports = {
       let issues = await Issue.find({
         isDeleted: false,
         isActive: true,
+        status: 'published',
       }).populate("title");
 
       let generalCategories = [];

@@ -44,7 +44,15 @@ module.exports = {
       });
 
       let issues = titleHasOneIssue.map((title) => {
-        let issue = title.issues.pop();
+
+        let publishedIssues = title.issues.filter((i) => i.status == "published");
+
+        let sortedPublishedIssues = publishedIssues.sort(function (a, b) {
+          return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+        });
+
+        let issue = sortedPublishedIssues.pop();
+
         return {
           id: issue.id,
           name: issue.name,

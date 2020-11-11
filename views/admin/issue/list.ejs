@@ -16,8 +16,19 @@
         <tr>
           <td><%= issue.name %></td>
           <td>
-            <% if (issue.status == true) { %> Active <% } else { %>
-            Passive <% } %>
+            <% if (issue.status == 'pending') { %> 
+              Pending
+            <% } else if (issue.status == 'processed') { %>
+            Processed
+            <% } else if (issue.status == 'ready-to-publish') { %>
+            Ready to Publish
+            <% } else if (issue.status == 'published') { %>
+            Published
+            <% } else if (issue.status == 'rejected') { %>
+            Rejected
+            <% } else { %>
+            Deleted
+            <% } %>
           </td>
           <td>
             <a href="/admin/issue/update/<%= issue.id %>">
