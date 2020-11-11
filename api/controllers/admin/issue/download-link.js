@@ -17,8 +17,10 @@ module.exports = {
     let req = this.req;
     let res = this.res;
 
-    const downloadLink = req.param("link");
-    const pdf = (await axios.get(downloadLink, { responseType: "arraybuffer" }))
+    const reqDownloadLink = req.param("link");
+
+    const downloadLink =reqDownloadLink.split("//");
+    const pdf = (await axios.get(downloadLink[1], { responseType: "arraybuffer" }))
       .data;
     if (!downloadLink || !pdf) {
       throw "not found";
