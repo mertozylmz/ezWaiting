@@ -5,12 +5,13 @@ module.exports = {
   description: "Download link file (returning a stream).",
 
   inputs: {
+  },
+
+  exits: {
     success: {
       description: "File downloaded",
     },
   },
-
-  exits: {},
 
   fn: async function (inputs) {
     let req = this.req;
