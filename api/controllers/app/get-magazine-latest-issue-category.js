@@ -65,14 +65,12 @@ module.exports = {
         };
       });
 
-      let finalIssues = await Promise.all(issues);
-
-      let isAllIssuesPublished = finalIssues.every((issue) => issue != null);
+      let isAllIssuesPublished = issues.every((issue) => issue != null);
 
       return exits.success({
         count: titleHasOneIssue.length,
         page: Number(req.param("page")),
-        issues: isAllIssuesPublished ? finalIssues : [],
+        issues: isAllIssuesPublished ? issues : [],
       });
     } catch (error) {
       sails.log.error("Get post error:", error);
