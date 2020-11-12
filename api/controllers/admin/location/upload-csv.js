@@ -29,6 +29,8 @@ module.exports = {
 
       let folderName = `csv/${file.id}`;
 
+      console.log(folderName);
+
       var supportedFileFormat = ["text-csv"];
       var fileType = req.file("file")._files[0].stream.headers["content-type"];
 
