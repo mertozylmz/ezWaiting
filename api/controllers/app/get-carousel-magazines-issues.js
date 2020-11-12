@@ -73,16 +73,12 @@ module.exports = {
 
       let finalIssues = await Promise.all(issues);
 
-      let allIssuesPublished = finalIssues.every((issue) => issue != null);
-
-      console.log(allIssuesPublished);
-
- 
+      let isAllIssuesPublished = finalIssues.every((issue) => issue != null);
 
       return exits.success({
         count: titleHasOneIssue.length,
         page: Number(req.param("page")),
-        issues: finalIssues,
+        issues: isAllIssuesPublished ? finalIssues : [],
       });
     } catch (error) {
       sails.log.error("Get post error:", error);
