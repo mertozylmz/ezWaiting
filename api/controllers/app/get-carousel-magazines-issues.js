@@ -38,10 +38,13 @@ module.exports = {
 
       let issues = await titleHasOneIssue.map(async (title) => {
         let publishedIssues = title.issues.filter(
-          (i) => i.status === "published"
+          (i) => {
+            console.log(i);
+            return i.status == "published";
+          }
         );
 
-        console.log(publishedIssues);
+ 
 
         let sortedPublishedIssues = publishedIssues.sort(function (a, b) {
           return (
