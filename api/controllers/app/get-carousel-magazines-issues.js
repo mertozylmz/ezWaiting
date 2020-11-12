@@ -73,6 +73,10 @@ module.exports = {
 
       let finalIssues = await Promise.all(issues);
 
+      let allIssuesPublished = finalIssues.every((issue) => issue != null);
+
+      console.log(allIssuesPublished);
+
       return exits.success({
         count: titleHasOneIssue.length,
         page: Number(req.param("page")),
