@@ -1,5 +1,5 @@
 <div class="br-section-wrapper">
-  <h6 class="br-section-label">location'S LIST</h6>
+  <h6 class="br-section-label">files'S LIST</h6>
   <form
     class="dropzone"
     id="pdfUploadDropzone"
@@ -20,23 +20,23 @@
         </tr>
       </thead>
       <tbody>
-        <% locations.forEach(function(location){ %>
+        <% filess.forEach(function(files){ %>
         <tr>
-          <td><%= location.name %></td>
-          <td><%= location.country.name %></td>
+          <td><%= files.name %></td>
+          <td><%= files.country.name %></td>
           <td>
-            <% if (location.isActive == true) { %> Active <% } else { %> Passive
+            <% if (files.isActive == true) { %> Active <% } else { %> Passive
             <% } %>
           </td>
           <td>
-            <a href="/admin/location/update/<%= location.id %>">
+            <a href="/admin/files/update/<%= files.id %>">
               <i class="fa fa-cog" aria-hidden="true"></i>
             </a>
           </td>
           <td>
             <a
               class="btn-remove"
-              href="/admin/location/delete/<%= location.id %>"
+              href="/admin/files/delete/<%= files.id %>"
             >
               <i class="ion-trash-a" aria-hidden="true"></i>
             </a>
