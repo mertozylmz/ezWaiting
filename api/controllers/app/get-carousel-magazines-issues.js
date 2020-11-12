@@ -36,15 +36,18 @@ module.exports = {
         return title.issues.length > 0;
       });
 
-      let issues = await titleHasOneIssue.map(async (title) => {
-        let publishedIssues = title.issues.filter(
-          (i) => {
-            console.log(i);
-            return i.status == "published";
-          }
-        );
+      if (titleHasOneIssue.length === 0){
+        return [];
+      }
 
- 
+      let issues = await titleHasOneIssue.map(async (title) => {
+        let publishedIssues = title.issues.filter((i) => {
+          return i.status == "published";
+        });
+
+        if (publishedIssues.length === 0) {
+          return null;
+        }
 
         let sortedPublishedIssues = publishedIssues.sort(function (a, b) {
           return (
