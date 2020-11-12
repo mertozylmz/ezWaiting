@@ -57,7 +57,7 @@ module.exports = {
         };
       });
 
-      let isAllIssuesPublished = finalIssues.every((issue) => issue != null);
+      let isAllIssuesPublished = issues.every((issue) => issue != null);
 
       return exits.success({
         count: titleHasOneIssue.length,
