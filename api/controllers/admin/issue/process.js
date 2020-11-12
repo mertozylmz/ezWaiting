@@ -14,8 +14,10 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
+    let req = this.req;
+
     let issue = await Issue.findOne({
-      id: req.param('id');
+      id: req.param('id')
     });
 
     let title = await Title.findOne({
