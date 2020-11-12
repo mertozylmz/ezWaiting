@@ -45,6 +45,8 @@ module.exports = {
 
         let issue = sortedPublishedIssues.pop();
 
+        console.log(issue);
+
         let pdf = await Pdf.findOne({
           issue: issue.id,
           isDeleted: false,
