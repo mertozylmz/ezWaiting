@@ -57,6 +57,7 @@ module.exports.routes = {
   "POST /admin/issue/update/:id": { action: "admin/issue/update" },
   "GET /admin/issue/delete/:id": { action: "admin/issue/delete" },
   "GET /admin/issue/download/:id": {action: "admin/issue/download"},
+  "GET /admin/issue/process/:id": {action: "admin/issue/process"},
 
   //Admin-Location Routes
   "GET /admin/location/create": { action: "admin/location/create-view" },
@@ -65,6 +66,7 @@ module.exports.routes = {
   "GET /admin/location/update/:id": { action: "admin/location/update-view" },
   "POST /admin/location/update/:id": { action: "admin/location/update" },
   "GET /admin/location/delete/:id": { action: "admin/location/delete" },
+  "GET /admin/location/uploaded/list": { action: "admin/location/upload-list" },
 
   //Admin-Publisher Routes
   "GET /admin/publisher/create": { action: "admin/publisher/create-view" },
