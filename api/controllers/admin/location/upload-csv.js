@@ -31,18 +31,6 @@ module.exports = {
 
       console.log(folderName);
 
-      var supportedFileFormat = ["text-csv"];
-      var fileType = req.file("file")._files[0].stream.headers["content-type"];
-
-      if (!supportedFileFormat.includes(fileType)) {
-        return exits.invalidRequest({
-          errors: [
-            {
-              message: "File format must be PDF only.",
-            },
-          ],
-        });
-      }
 
       const directoryName = `${folderName}`;
 
