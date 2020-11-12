@@ -60,7 +60,7 @@ module.exports = {
       let isAllIssuesPublished = issues.every((issue) => issue != null);
 
       return exits.success({
-        count: titleHasOneIssue.length,
+        count: isAllIssuesPublished ? issues.length : 0,
         page: Number(req.param("page")),
         issues: isAllIssuesPublished ? issues : [],
       });
