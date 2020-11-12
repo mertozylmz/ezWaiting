@@ -47,10 +47,6 @@ module.exports = {
 
         let publishedIssues = title.issues.filter((i) => i.status == "published");
 
-        if (publishedIssues.length === 0) {
-          return null;
-        }
-
         let sortedPublishedIssues = publishedIssues.sort(function (a, b) {
           return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
         });
@@ -65,12 +61,10 @@ module.exports = {
         };
       });
 
-      let isAllIssuesPublished = issues.every((issue) => issue != null);
-
       return exits.success({
         count: titleHasOneIssue.length,
         page: Number(req.param("page")),
-        issues: isAllIssuesPublished ? issues : [],
+        issues: issues,
       });
     } catch (error) {
       sails.log.error("Get post error:", error);
