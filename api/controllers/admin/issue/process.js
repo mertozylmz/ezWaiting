@@ -20,13 +20,19 @@ module.exports = {
       id: req.param('id')
     });
 
+    console.log(issue.id);
+
     let title = await Title.findOne({
       id: issue.title
     });
 
+    console.log(title.id);
+
     let publisher = await User.findOne({
       id: title.publisher
     })
+
+    console.log(publisher.id);
 
     const response = await axios.get('https://ezazurehttpapp.azurewebsites.net/api/ezhttptrigger?code=07eoKipADc6f9MugL6HbLVkE9E2bofrKu3ejb/JtLK2IJbkYkF040Q==&path=magazinefiles/issues/'+publisher.id+ '/' + title.id+ '/'+issue.id);
 
