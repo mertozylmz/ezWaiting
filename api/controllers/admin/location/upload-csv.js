@@ -25,6 +25,7 @@ module.exports = {
 
       let file = await LocationFile.create({
         link: "",
+        isProcessed: false
       }).fetch();
 
       let folderName = `csv/${file.id}`;

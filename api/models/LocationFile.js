@@ -16,6 +16,9 @@ module.exports = {
     link: {
       type: 'string'
     },
+    isProcessed: {
+      type: 'boolean'
+    }
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
