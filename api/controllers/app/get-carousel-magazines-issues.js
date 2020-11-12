@@ -39,13 +39,14 @@ module.exports = {
       let issues = await titleHasOneIssue.map(async (title) => {
         let publishedIssues = title.issues.filter((i) => i.status == "published");
 
+        console.log(publishedIssues);
+
         let sortedPublishedIssues = publishedIssues.sort(function (a, b) {
           return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
         });
 
         let issue = sortedPublishedIssues.pop();
 
-        console.log(issue);
 
         let pdf = await Pdf.findOne({
           issue: issue.id,
