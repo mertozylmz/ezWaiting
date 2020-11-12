@@ -73,9 +73,9 @@ module.exports = {
 
       let finalIssues = await Promise.all(issues);
 
-      console.log(finalIssues);
-
       let allIssuesPublished = finalIssues.every((issue) => issue != null);
+
+      console.log(allIssuesPublished);
 
  
 
