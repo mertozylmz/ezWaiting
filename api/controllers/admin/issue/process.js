@@ -1,4 +1,4 @@
-let axios = require('axios');
+const axios = require("axios");
 module.exports = {
   friendlyName: "Process Pdf",
 
@@ -8,38 +8,59 @@ module.exports = {
 
   exits: {
     success: {
-      description: 'Response done succesfully.'
+      description: "Response done succesfully.",
     },
   },
 
   fn: async function (inputs, exits) {
+    try {
+      let req = this.req;
 
-    let req = this.req;
+      let issue = await Issue.findOne({
+        id: req.param("id"),
+      });
 
-    let issue = await Issue.findOne({
-      id: req.param('id')
-    });
+      let title =  await Title.findOne({
+        id: issue.title
+      });
 
-    console.log(issue.id);
+      let publisher = await User.findOne({
+        id: title.publisher
+      });
 
-    let title = await Title.findOne({
-      id: issue.title
-    });
+      let pdf = await Pdf.findOne({
+        issue: issue.id,
+        isDeleted: false,
+        isActive: true,
+      });
 
-    console.log(title.id);
 
-    let publisher = await User.findOne({
-      id: title.publisher
-    })
+      let link = pdf.link.split(
+        "https://ezwaitingstorage.blob.core.windows.net/"
+      )[1];
 
-    console.log(publisher.id);
+      let finalLink = `https://ezazurehttpapp.azurewebsites.net/api/ezhttptrigger?path=${link}&name=${issue.id}&code=07eoKipADc6f9MugL6HbLVkE9E2bofrKu3ejb/JtLK2IJbkYkF040Q==&`;
 
-    const response = await axios.get('https://ezazurehttpapp.azurewebsites.net/api/ezhttptrigger?code=07eoKipADc6f9MugL6HbLVkE9E2bofrKu3ejb/JtLK2IJbkYkF040Q==&path=magazinefiles/issues/'+publisher.id+ '/' + title.id+ '/'+issue.id);
+      const response = await axios.get(finalLink);
 
-    console.log(response);
+      let thumbImgs = [];
 
-    return exits.success({
-      status :true
-    });
+      for (var i = 0; i < Number(response.data.pages); i++) {
+        thumbImgs.push(`${i}.jpg`);
+      }
+
+      let zipLink = `https://ezwaitingstorage.blob.core.windows.net/ezmagazinefiles/issues/${publisher.id}/${title.id}/${issue.id}/${issue.id}.zip`
+
+      await Pdf.update({ id: pdf.id }).set({
+        thumbImages: thumbImgs,
+        zipLink: zipLink
+      });
+
+      return exits.success({
+        status: true,
+      });
+    } catch (error) {
+      console.log(error.response);
+    }
   },
 };

@@ -16,8 +16,16 @@ module.exports = {
       type: 'string'
     },
 
-    thumbImage: {
+    thumbImages: {
+      type: 'json'
+    },
+
+    zipLink: {
       type: 'string'
+    },
+
+    isProcessed: {
+      type: 'boolean'
     },
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗

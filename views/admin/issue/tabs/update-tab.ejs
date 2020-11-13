@@ -67,10 +67,15 @@
         <div class="col-lg-6">
           <div class="form-group">
             <label class="form-control-label">Process: <span class="tx-danger"></span></label>
-            <a href="/admin/issue/process/<%= issue.id %>" class="btn btn-primary">Process the files</a>
+            <a href="/admin/issue/process/<%= issue.id %>" class="btn btn-primary btn-process">Process the files</a><br>
+            <% if (pdfs[0].isProcessed == true) { %>
+              <small>***IMPORTANT NOTICE! That file has processed before.</small>
+            <% } %>
           </div>
         </div><!-- col-4 -->
       </div><!-- row -->
+
+
 
       
 
@@ -80,4 +85,10 @@
       </div><!-- form-layout-footer -->
     </div><!-- form-layout -->
   </form>
+</div>
+
+<div class="overlay overlay__loader" style="display: none;">
+  <div class="overlay__inner">
+      <div class="overlay__content"><span class="spinner"></span></div>
+  </div>
 </div>

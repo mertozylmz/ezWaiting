@@ -47,23 +47,27 @@ module.exports = {
       await req.file("file").upload(
         {
           adapter: require("skipper-azure"),
-          key: "ezwaitingroomv2",
-          secret: "",
-          container: "magazinefiles",
+          key: "ezwaitingstorage",
+          secret:
+            "Xap8qObYcuRMyCVZwoz1m6ktuoOHrVsGXJd5b+cHdUAgggMN0k52W6z1T6o84WDoC/0Mi6A23jibpazRwZV37A==",
+          container: "ezmagazinefiles",
           dirname: directoryName,
           maxBytes: 10000000000,
         },
         async function whenDone(err, uploadedFiles) {
+          console.log(err);
           await Pdf.create({
-            link: `https://ezwaitingroomv2.blob.core.windows.net/magazinefiles/${uploadedFiles[0].fd}`,
+            link: `https://ezwaitingstorage.blob.core.windows.net/ezmagazinefiles/${uploadedFiles[0].fd}`,
             issue: issue,
-            thumbImg: `https://ezwaitingroomv2.blob.core.windows.net/magazinefiles/1.jpg`
+            thumbImg: `https://ezwaitingstorage.blob.core.windows.net/ezmagazinefiles/1.jpg`,
+            thumbImages: {},
+            isProcessed: false
           });
         }
       );
 
-      return res.send('OK');
 
+      return res.send("OK");
     } catch (error) {
       console.log("Upload pdf issue error: ", error);
       return exits.invalidRequest({

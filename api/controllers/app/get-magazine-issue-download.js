@@ -26,7 +26,7 @@ module.exports = {
 
       if(pdf){
         return exits.success({
-          url: pdf.link
+          url: pdf.zipLink
         });
       }else {
         return exits.success({
