@@ -68,6 +68,7 @@ module.exports.routes = {
   "GET /admin/location/delete/:id": { action: "admin/location/delete" },
   "GET /admin/location/uploaded/list": { action: "admin/location/upload-list" },
   "POST /admin/location/upload": { action: "admin/location/upload-csv" },
+  "GET /admin/location/process/:id": {action: "admin/location/process"},
 
   //Admin-Publisher Routes
   "GET /admin/publisher/create": { action: "admin/publisher/create-view" },

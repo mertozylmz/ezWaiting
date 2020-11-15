@@ -38,15 +38,15 @@ module.exports = {
       await req.file("file").upload(
         {
           adapter: require("skipper-azure"),
-          key: "ezwaitingroomv2",
-          secret: "M9pwOy08NL0dMdlHUiqy569n2ffp0JAuSVIVpMbC577dEFGESZaQbuWr45TpyhTPkK+dxVr0fofhqXR9HKjxZA==",
-          container: "magazinefiles",
+          key: "ezwaitingstorage",
+          secret: "",
+          container: "ezmagazinefiles",
           dirname: directoryName,
           maxBytes: 10000000000,
         },
         async function whenDone(err, uploadedFiles) {
           await LocationFile.update({ id: file.id }).set({
-            link: `https://ezwaitingroomv2.blob.core.windows.net/magazinefiles/${uploadedFiles[0].fd}`
+            link: `https://ezwaitingstorage.blob.core.windows.net/ezmagazinefiles/${uploadedFiles[0].fd}`
           });
         }
       );

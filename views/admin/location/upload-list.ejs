@@ -6,7 +6,7 @@
     enctype="multipart/form-data"
     action="/admin/location/upload"
   >
-  <br>
+    <br />
     <!-- Dropzone.js -->
   </form>
   <div class="table-wrapper">
@@ -17,6 +17,7 @@
           <th class="wd-10p">Is Processed?</th>
           <th class="wd-10p">Update</th>
           <th class="wd-25p">Delete</th>
+          <th class="wd-25p">Process?</th>
         </tr>
       </thead>
       <tbody>
@@ -24,8 +25,7 @@
         <tr>
           <td><%= files.id %></td>
           <td>
-            <% if (files.isProcessed == true) { %> Yes <% } else { %> No
-            <% } %>
+            <% if (files.isProcessed == true) { %> Yes <% } else { %> No <% } %>
           </td>
           <td>
             <a href="/admin/files/update/<%= files.id %>">
@@ -33,13 +33,19 @@
             </a>
           </td>
           <td>
-            <a
-              class="btn-remove"
-              href="/admin/files/delete/<%= files.id %>"
-            >
+            <a class="btn-remove" href="/admin/files/delete/<%= files.id %>">
               <i class="ion-trash-a" aria-hidden="true"></i>
             </a>
           </td>
+
+          <td>
+          <% if (files.isProcessed != true) { %>
+
+              <button href="/admin/location/process/<%= files.id%>" class="btn-primary btn-process">Process</button>
+            
+          <% } %>
+
+        </td>
         </tr>
         <% }); %>
       </tbody>

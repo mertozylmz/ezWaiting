@@ -49,7 +49,7 @@ module.exports = {
           adapter: require("skipper-azure"),
           key: "ezwaitingstorage",
           secret:
-            "Xap8qObYcuRMyCVZwoz1m6ktuoOHrVsGXJd5b+cHdUAgggMN0k52W6z1T6o84WDoC/0Mi6A23jibpazRwZV37A==",
+            "",
           container: "ezmagazinefiles",
           dirname: directoryName,
           maxBytes: 10000000000,
@@ -59,7 +59,6 @@ module.exports = {
           await Pdf.create({
             link: `https://ezwaitingstorage.blob.core.windows.net/ezmagazinefiles/${uploadedFiles[0].fd}`,
             issue: issue,
-            thumbImg: `https://ezwaitingstorage.blob.core.windows.net/ezmagazinefiles/1.jpg`,
             thumbImages: {},
             isProcessed: false
           });

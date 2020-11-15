@@ -32,9 +32,9 @@ module.exports = {
       await req.file("file").upload(
         {
           adapter: require("skipper-azure"),
-          key: "ezwaitingroomv2",
+          key: "ezwaitingstorage",
           secret: "",
-          container: "magazinefiles",
+          container: "ezmagazinefiles",
           dirname: directoryName,
           maxBytes: 10000000000,
         },
@@ -42,7 +42,7 @@ module.exports = {
           await Category.update({
             id: category
           }).set({
-            thumbImg: `https://ezwaitingroomv2.blob.core.windows.net/magazinefiles/${uploadedFiles[0].fd}`
+            thumbImg: `https://ezwaitingstorage.blob.core.windows.net/ezmagazinefiles/${uploadedFiles[0].fd}`
           });
         }
       );

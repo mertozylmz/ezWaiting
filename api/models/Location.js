@@ -44,6 +44,15 @@ module.exports = {
       type: "string",
       description: "State value of location.",
     },
+    zip: {
+      type: 'string',
+      description: "Zip value of the location."
+    },
+
+    normalized: {
+      type: 'string',
+      description: 'Normalized address of the location.'
+    },
 
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
