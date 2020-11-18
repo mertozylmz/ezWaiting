@@ -66,7 +66,8 @@ module.exports = {
         radius: inputs.radius,
         city: inputs.city,
         state: inputs.state,
-        country: inputs.country
+        country: inputs.country,
+        coordinates: [inputs.longitude, inputs.latitude]
       }
 
 

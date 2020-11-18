@@ -95,7 +95,7 @@ module.exports.routes = {
   "GET /admin/category/delete/:id": { action: "admin/category/delete" },
   "POST /admin/category/upload/:id": { action: "admin/category/upload-picture" },
   "GET /admin/category/delete/picture/:id": {action: "admin/category/delete-picture"},
-  
+
 
   //Admin-Upload-PDF Routes
   "POST /admin/pdf/upload/:pid/:tid/:iid": { action: "admin/issue/pdf-upload" },
@@ -117,4 +117,5 @@ module.exports.routes = {
   "GET /api/v1/magazine/:issueId/download": {
     action: "app/get-magazine-issue-download",
   },
+  "POST /api/v1/nearby/hotspots": { action: 'app/hotspots' }
 };

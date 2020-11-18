@@ -54,6 +54,11 @@ module.exports = {
       description: 'Normalized address of the location.'
     },
 
+    coordinates: {
+      type: 'json',
+      description: "Long, Lat value of location.",
+    },
+
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
@@ -71,4 +76,42 @@ module.exports = {
       via: "locations",
     },
   },
+
+  findNear: async function (conditions, callback) {
+    var db = Location.getDatastore().manager;
+    var collection = db.collection(Location.tableName);
+
+    console.log(conditions);
+
+    collection.aggregate([{
+      $geoNear: {
+        near: {
+          type: "Point",
+          coordinates: [conditions.lng, conditions.lat]
+        },
+        distanceField: "dist.calculated",
+        distanceMultiplier: 0.001,
+        maxDistance: conditions.maxDistance * 1000.0,
+        spherical: true
+      }
+    }, {
+      $limit: conditions.limit
+    }]).toArray((err, result) => {
+      // if (err) return console.log(err)
+      callback(err, result);
+    });
+
+    /* collection.geoNear({
+      type: "Point",
+      coordinates: [conditions.lng, conditions.lat]
+    }, {
+      limit: conditions.limit,
+      maxDistance: conditions.maxDistance * 1000.0,
+      distanceMultiplier: 0.001,
+      spherical: true
+    }, function (err, stations) {
+      if (err) return callback(err);
+      return callback(null, stations.results);
+    }); */
+  }
 };

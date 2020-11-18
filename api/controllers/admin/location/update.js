@@ -68,6 +68,7 @@ module.exports = {
         state: inputs.state,
         country: inputs.country,
         modifiedBy: req.user.id,
+        coordinates: [inputs.longitude, inputs.latitude]
       };
 
       schemaLocation

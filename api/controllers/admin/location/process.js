@@ -59,6 +59,7 @@ module.exports = {
           country: country.id,
           radius: 50,
           createdBy: req.user.id,
+          coordinates: [Number(location[6]), Number(location[7])]
         });
       }
     });

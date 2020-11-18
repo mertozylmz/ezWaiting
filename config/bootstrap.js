@@ -9,8 +9,7 @@
  * https://sailsjs.com/config/bootstrap
  */
 
-module.exports.bootstrap = async function() {
-
+module.exports.bootstrap = async function(done) {
   if (sails.config.models.migrate == 'safe' && sails.config.environment == 'development') {
     for (let identity in sails.models) {
       await sails.models[identity].destroy({});
@@ -18,4 +17,12 @@ module.exports.bootstrap = async function() {
 
     await sails.helpers.seedData(sails.config.environment);}
 
+  var db = Location.getDatastore().manager;
+
+  var rawMongoCollection = db.collection(Location.tableName);
+  rawMongoCollection.ensureIndex({
+    coordinates: '2dsphere'
+  }, function () {
+    return done();
+  });
 };
